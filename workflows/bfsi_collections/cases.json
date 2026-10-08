@@ -1,0 +1,766 @@
+[
+ {
+  "id": "BFSI-001",
+  "amount": 10894.19,
+  "text": "Ok noted.",
+  "attributes": {
+   "broken_promises_below_limit": true,
+   "charge_applied_in_error": true,
+   "contact_not_linked_to_borrower": true,
+   "hardship_documentation_received": true,
+   "payment_found_in_ledger": true,
+   "promise_within_policy_days": true
+  },
+  "flags": [],
+  "truth": {
+   "category": "promise_to_pay",
+   "outcome": "valid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "BFSI-002",
+  "amount": 45092.13,
+  "text": "I already paid yesterday through UPI, transaction id attached.",
+  "attributes": {
+   "broken_promises_below_limit": false,
+   "charge_applied_in_error": true,
+   "contact_not_linked_to_borrower": true,
+   "hardship_documentation_received": true,
+   "payment_found_in_ledger": true,
+   "promise_within_policy_days": true
+  },
+  "flags": [],
+  "truth": {
+   "category": "already_paid",
+   "outcome": "valid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "BFSI-003",
+  "amount": 39385.74,
+  "text": "I already paid yesterday through UPI, transaction id attached. Penalty charge looks incorrect, please check.",
+  "attributes": {
+   "broken_promises_below_limit": true,
+   "charge_applied_in_error": true,
+   "contact_not_linked_to_borrower": true,
+   "hardship_documentation_received": false,
+   "payment_found_in_ledger": true,
+   "promise_within_policy_days": false
+  },
+  "flags": [],
+  "truth": {
+   "category": "charge_dispute",
+   "outcome": "valid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "BFSI-004",
+  "amount": 35777.33,
+  "text": "I lost my job last month and cannot pay right now.",
+  "attributes": {
+   "broken_promises_below_limit": false,
+   "charge_applied_in_error": true,
+   "contact_not_linked_to_borrower": true,
+   "hardship_documentation_received": true,
+   "payment_found_in_ledger": false,
+   "promise_within_policy_days": false
+  },
+  "flags": [],
+  "truth": {
+   "category": "hardship",
+   "outcome": "valid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "BFSI-005",
+  "amount": 67837.55,
+  "text": "Ok noted.",
+  "attributes": {
+   "broken_promises_below_limit": true,
+   "charge_applied_in_error": false,
+   "contact_not_linked_to_borrower": false,
+   "hardship_documentation_received": true,
+   "payment_found_in_ledger": false,
+   "promise_within_policy_days": true
+  },
+  "flags": [],
+  "truth": {
+   "category": "wrong_party",
+   "outcome": "invalid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "BFSI-006",
+  "amount": 39088.84,
+  "text": "I will pay on the 5th when salary comes in.",
+  "attributes": {
+   "broken_promises_below_limit": true,
+   "charge_applied_in_error": false,
+   "contact_not_linked_to_borrower": false,
+   "hardship_documentation_received": false,
+   "payment_found_in_ledger": false,
+   "promise_within_policy_days": true
+  },
+  "flags": [],
+  "truth": {
+   "category": "promise_to_pay",
+   "outcome": "valid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "BFSI-007",
+  "amount": 178313.58,
+  "text": "I already paid yesterday through UPI, transaction id attached.",
+  "attributes": {
+   "broken_promises_below_limit": false,
+   "charge_applied_in_error": true,
+   "contact_not_linked_to_borrower": true,
+   "hardship_documentation_received": true,
+   "payment_found_in_ledger": true,
+   "promise_within_policy_days": true
+  },
+  "flags": [],
+  "truth": {
+   "category": "already_paid",
+   "outcome": "valid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "BFSI-008",
+  "amount": 25426.73,
+  "text": "Bounce charge applied twice, wrong amount on statement.",
+  "attributes": {
+   "broken_promises_below_limit": false,
+   "charge_applied_in_error": true,
+   "contact_not_linked_to_borrower": true,
+   "hardship_documentation_received": true,
+   "payment_found_in_ledger": true,
+   "promise_within_policy_days": false
+  },
+  "flags": [],
+  "truth": {
+   "category": "charge_dispute",
+   "outcome": "valid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "BFSI-009",
+  "amount": 161669.01,
+  "text": "Facing hardship after job loss, need time.",
+  "attributes": {
+   "broken_promises_below_limit": true,
+   "charge_applied_in_error": true,
+   "contact_not_linked_to_borrower": false,
+   "hardship_documentation_received": true,
+   "payment_found_in_ledger": false,
+   "promise_within_policy_days": false
+  },
+  "flags": [],
+  "truth": {
+   "category": "hardship",
+   "outcome": "valid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "BFSI-010",
+  "amount": 44783.02,
+  "text": "Wrong number, this is not my loan.",
+  "attributes": {
+   "broken_promises_below_limit": true,
+   "charge_applied_in_error": true,
+   "contact_not_linked_to_borrower": true,
+   "hardship_documentation_received": false,
+   "payment_found_in_ledger": true,
+   "promise_within_policy_days": true
+  },
+  "flags": [],
+  "truth": {
+   "category": "wrong_party",
+   "outcome": "valid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "BFSI-011",
+  "amount": 14952.93,
+  "text": "I will pay on the 5th when salary comes in.",
+  "attributes": {
+   "broken_promises_below_limit": true,
+   "charge_applied_in_error": true,
+   "contact_not_linked_to_borrower": true,
+   "hardship_documentation_received": true,
+   "payment_found_in_ledger": true,
+   "promise_within_policy_days": false
+  },
+  "flags": [],
+  "truth": {
+   "category": "promise_to_pay",
+   "outcome": "invalid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "BFSI-012",
+  "amount": 183599.0,
+  "text": "This is already paid, check your records.",
+  "attributes": {
+   "broken_promises_below_limit": true,
+   "charge_applied_in_error": true,
+   "contact_not_linked_to_borrower": false,
+   "hardship_documentation_received": true,
+   "payment_found_in_ledger": true,
+   "promise_within_policy_days": true
+  },
+  "flags": [],
+  "truth": {
+   "category": "already_paid",
+   "outcome": "valid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "BFSI-013",
+  "amount": 60230.35,
+  "text": "Why is there a late fee when I paid on the due date? I dispute this charge.",
+  "attributes": {
+   "broken_promises_below_limit": true,
+   "charge_applied_in_error": false,
+   "contact_not_linked_to_borrower": true,
+   "hardship_documentation_received": true,
+   "payment_found_in_ledger": false,
+   "promise_within_policy_days": false
+  },
+  "flags": [],
+  "truth": {
+   "category": "charge_dispute",
+   "outcome": "invalid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "BFSI-014",
+  "amount": 194600.08,
+  "text": "Facing hardship after job loss, need time.",
+  "attributes": {
+   "broken_promises_below_limit": true,
+   "charge_applied_in_error": true,
+   "contact_not_linked_to_borrower": true,
+   "hardship_documentation_received": true,
+   "payment_found_in_ledger": false,
+   "promise_within_policy_days": false
+  },
+  "flags": [],
+  "truth": {
+   "category": "hardship",
+   "outcome": "valid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "BFSI-015",
+  "amount": 33528.72,
+  "text": "I do not know this person, who is this?",
+  "attributes": {
+   "broken_promises_below_limit": true,
+   "charge_applied_in_error": true,
+   "contact_not_linked_to_borrower": false,
+   "hardship_documentation_received": false,
+   "payment_found_in_ledger": false,
+   "promise_within_policy_days": true
+  },
+  "flags": [],
+  "truth": {
+   "category": "wrong_party",
+   "outcome": "invalid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "BFSI-016",
+  "amount": 13654.92,
+  "text": "I will pay on the 5th when salary comes in.",
+  "attributes": {
+   "broken_promises_below_limit": false,
+   "charge_applied_in_error": false,
+   "contact_not_linked_to_borrower": true,
+   "hardship_documentation_received": false,
+   "payment_found_in_ledger": false,
+   "promise_within_policy_days": true
+  },
+  "flags": [],
+  "truth": {
+   "category": "promise_to_pay",
+   "outcome": "invalid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "BFSI-017",
+  "amount": 132057.13,
+  "text": "Penalty charge looks incorrect, please check. This is already paid, check your records.",
+  "attributes": {
+   "broken_promises_below_limit": false,
+   "charge_applied_in_error": false,
+   "contact_not_linked_to_borrower": true,
+   "hardship_documentation_received": true,
+   "payment_found_in_ledger": false,
+   "promise_within_policy_days": true
+  },
+  "flags": [],
+  "truth": {
+   "category": "already_paid",
+   "outcome": "invalid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "BFSI-018",
+  "amount": 65943.57,
+  "text": "Why is there a late fee when I paid on the due date? I dispute this charge.",
+  "attributes": {
+   "broken_promises_below_limit": true,
+   "charge_applied_in_error": false,
+   "contact_not_linked_to_borrower": true,
+   "hardship_documentation_received": true,
+   "payment_found_in_ledger": true,
+   "promise_within_policy_days": true
+  },
+  "flags": [],
+  "truth": {
+   "category": "charge_dispute",
+   "outcome": "invalid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "BFSI-019",
+  "amount": 46292.15,
+  "text": "I lost my job last month and cannot pay right now.",
+  "attributes": {
+   "broken_promises_below_limit": true,
+   "charge_applied_in_error": true,
+   "contact_not_linked_to_borrower": true,
+   "hardship_documentation_received": true,
+   "payment_found_in_ledger": true,
+   "promise_within_policy_days": false
+  },
+  "flags": [],
+  "truth": {
+   "category": "hardship",
+   "outcome": "valid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "BFSI-020",
+  "amount": 73349.09,
+  "text": "I do not know this person, who is this?",
+  "attributes": {
+   "broken_promises_below_limit": false,
+   "charge_applied_in_error": true,
+   "contact_not_linked_to_borrower": true,
+   "hardship_documentation_received": true,
+   "payment_found_in_ledger": true,
+   "promise_within_policy_days": false
+  },
+  "flags": [],
+  "truth": {
+   "category": "wrong_party",
+   "outcome": "valid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "BFSI-021",
+  "amount": 104310.62,
+  "text": "Call me later.",
+  "attributes": {
+   "broken_promises_below_limit": true,
+   "charge_applied_in_error": true,
+   "contact_not_linked_to_borrower": true,
+   "hardship_documentation_received": true,
+   "payment_found_in_ledger": false,
+   "promise_within_policy_days": false
+  },
+  "flags": [],
+  "truth": {
+   "category": "promise_to_pay",
+   "outcome": "invalid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "BFSI-022",
+  "amount": 196105.37,
+  "text": "Paid the EMI, here is the UTR and receipt.",
+  "attributes": {
+   "broken_promises_below_limit": true,
+   "charge_applied_in_error": false,
+   "contact_not_linked_to_borrower": true,
+   "hardship_documentation_received": true,
+   "payment_found_in_ledger": false,
+   "promise_within_policy_days": true
+  },
+  "flags": [],
+  "truth": {
+   "category": "already_paid",
+   "outcome": "invalid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "BFSI-023",
+  "amount": 31812.39,
+  "text": "Bounce charge applied twice, wrong amount on statement.",
+  "attributes": {
+   "broken_promises_below_limit": true,
+   "charge_applied_in_error": true,
+   "contact_not_linked_to_borrower": true,
+   "hardship_documentation_received": false,
+   "payment_found_in_ledger": false,
+   "promise_within_policy_days": true
+  },
+  "flags": [],
+  "truth": {
+   "category": "charge_dispute",
+   "outcome": "valid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "BFSI-024",
+  "amount": 24665.95,
+  "text": "I lost my job last month and cannot pay right now.",
+  "attributes": {
+   "broken_promises_below_limit": true,
+   "charge_applied_in_error": true,
+   "contact_not_linked_to_borrower": true,
+   "hardship_documentation_received": true,
+   "payment_found_in_ledger": true,
+   "promise_within_policy_days": false
+  },
+  "flags": [],
+  "truth": {
+   "category": "hardship",
+   "outcome": "valid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "BFSI-025",
+  "amount": 25208.73,
+  "text": "Wrong number, this is not my loan.",
+  "attributes": {
+   "broken_promises_below_limit": false,
+   "charge_applied_in_error": false,
+   "contact_not_linked_to_borrower": true,
+   "hardship_documentation_received": false,
+   "payment_found_in_ledger": true,
+   "promise_within_policy_days": true
+  },
+  "flags": [],
+  "truth": {
+   "category": "wrong_party",
+   "outcome": "valid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "BFSI-026",
+  "amount": 79567.25,
+  "text": "I will pay on the 5th when salary comes in.",
+  "attributes": {
+   "broken_promises_below_limit": true,
+   "charge_applied_in_error": true,
+   "contact_not_linked_to_borrower": true,
+   "hardship_documentation_received": true,
+   "payment_found_in_ledger": false,
+   "promise_within_policy_days": true
+  },
+  "flags": [],
+  "truth": {
+   "category": "promise_to_pay",
+   "outcome": "valid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "BFSI-027",
+  "amount": 26037.02,
+  "text": "I already paid yesterday through UPI, transaction id attached.",
+  "attributes": {
+   "broken_promises_below_limit": true,
+   "charge_applied_in_error": true,
+   "contact_not_linked_to_borrower": true,
+   "hardship_documentation_received": true,
+   "payment_found_in_ledger": true,
+   "promise_within_policy_days": true
+  },
+  "flags": [],
+  "truth": {
+   "category": "already_paid",
+   "outcome": "valid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "BFSI-028",
+  "amount": 53408.06,
+  "text": "Why is there a late fee when I paid on the due date? I dispute this charge.",
+  "attributes": {
+   "broken_promises_below_limit": false,
+   "charge_applied_in_error": true,
+   "contact_not_linked_to_borrower": true,
+   "hardship_documentation_received": true,
+   "payment_found_in_ledger": false,
+   "promise_within_policy_days": true
+  },
+  "flags": [],
+  "truth": {
+   "category": "charge_dispute",
+   "outcome": "valid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "BFSI-029",
+  "amount": 13866.21,
+  "text": "I am not the borrower, stop calling. My father is in hospital, medical expenses, I cannot pay this month.",
+  "attributes": {
+   "broken_promises_below_limit": false,
+   "charge_applied_in_error": false,
+   "contact_not_linked_to_borrower": true,
+   "hardship_documentation_received": true,
+   "payment_found_in_ledger": false,
+   "promise_within_policy_days": false
+  },
+  "flags": [
+   "legal_notice_issued"
+  ],
+  "truth": {
+   "category": "hardship",
+   "outcome": "valid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "BFSI-030",
+  "amount": 37882.67,
+  "text": "Wrong number, this is not my loan.",
+  "attributes": {
+   "broken_promises_below_limit": true,
+   "charge_applied_in_error": false,
+   "contact_not_linked_to_borrower": true,
+   "hardship_documentation_received": false,
+   "payment_found_in_ledger": true,
+   "promise_within_policy_days": true
+  },
+  "flags": [],
+  "truth": {
+   "category": "wrong_party",
+   "outcome": "valid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "BFSI-031",
+  "amount": 42359.91,
+  "text": "Ok noted.",
+  "attributes": {
+   "broken_promises_below_limit": true,
+   "charge_applied_in_error": false,
+   "contact_not_linked_to_borrower": true,
+   "hardship_documentation_received": true,
+   "payment_found_in_ledger": true,
+   "promise_within_policy_days": true
+  },
+  "flags": [
+   "complaint_escalated"
+  ],
+  "truth": {
+   "category": "promise_to_pay",
+   "outcome": "valid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "BFSI-032",
+  "amount": 41558.5,
+  "text": "This is already paid, check your records.",
+  "attributes": {
+   "broken_promises_below_limit": true,
+   "charge_applied_in_error": true,
+   "contact_not_linked_to_borrower": true,
+   "hardship_documentation_received": true,
+   "payment_found_in_ledger": false,
+   "promise_within_policy_days": true
+  },
+  "flags": [],
+  "truth": {
+   "category": "already_paid",
+   "outcome": "invalid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "BFSI-033",
+  "amount": 71855.06,
+  "text": "Why is there a late fee when I paid on the due date? I dispute this charge.",
+  "attributes": {
+   "broken_promises_below_limit": false,
+   "charge_applied_in_error": false,
+   "contact_not_linked_to_borrower": true,
+   "hardship_documentation_received": true,
+   "payment_found_in_ledger": false,
+   "promise_within_policy_days": true
+  },
+  "flags": [],
+  "truth": {
+   "category": "charge_dispute",
+   "outcome": "invalid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "BFSI-034",
+  "amount": 24048.26,
+  "text": "I lost my job last month and cannot pay right now.",
+  "attributes": {
+   "broken_promises_below_limit": true,
+   "charge_applied_in_error": false,
+   "contact_not_linked_to_borrower": false,
+   "hardship_documentation_received": true,
+   "payment_found_in_ledger": true,
+   "promise_within_policy_days": true
+  },
+  "flags": [],
+  "truth": {
+   "category": "hardship",
+   "outcome": "valid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "BFSI-035",
+  "amount": 60226.97,
+  "text": "I am not the borrower, stop calling.",
+  "attributes": {
+   "broken_promises_below_limit": false,
+   "charge_applied_in_error": true,
+   "contact_not_linked_to_borrower": false,
+   "hardship_documentation_received": false,
+   "payment_found_in_ledger": true,
+   "promise_within_policy_days": false
+  },
+  "flags": [],
+  "truth": {
+   "category": "wrong_party",
+   "outcome": "invalid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "BFSI-036",
+  "amount": 40663.97,
+  "text": "Paid the EMI, here is the UTR and receipt. Can pay by friday, please stop calling till then.",
+  "attributes": {
+   "broken_promises_below_limit": true,
+   "charge_applied_in_error": true,
+   "contact_not_linked_to_borrower": false,
+   "hardship_documentation_received": true,
+   "payment_found_in_ledger": true,
+   "promise_within_policy_days": false
+  },
+  "flags": [],
+  "truth": {
+   "category": "promise_to_pay",
+   "outcome": "invalid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "BFSI-037",
+  "amount": 39943.83,
+  "text": "I already paid yesterday through UPI, transaction id attached.",
+  "attributes": {
+   "broken_promises_below_limit": false,
+   "charge_applied_in_error": true,
+   "contact_not_linked_to_borrower": true,
+   "hardship_documentation_received": true,
+   "payment_found_in_ledger": false,
+   "promise_within_policy_days": true
+  },
+  "flags": [],
+  "truth": {
+   "category": "already_paid",
+   "outcome": "invalid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "BFSI-038",
+  "amount": 25247.16,
+  "text": "I do not know this person, who is this? Bounce charge applied twice, wrong amount on statement.",
+  "attributes": {
+   "broken_promises_below_limit": true,
+   "charge_applied_in_error": false,
+   "contact_not_linked_to_borrower": true,
+   "hardship_documentation_received": true,
+   "payment_found_in_ledger": true,
+   "promise_within_policy_days": true
+  },
+  "flags": [],
+  "truth": {
+   "category": "charge_dispute",
+   "outcome": "invalid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "BFSI-039",
+  "amount": 29180.65,
+  "text": "My father is in hospital, medical expenses, I cannot pay this month.",
+  "attributes": {
+   "broken_promises_below_limit": true,
+   "charge_applied_in_error": true,
+   "contact_not_linked_to_borrower": false,
+   "hardship_documentation_received": true,
+   "payment_found_in_ledger": true,
+   "promise_within_policy_days": false
+  },
+  "flags": [],
+  "truth": {
+   "category": "hardship",
+   "outcome": "valid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "BFSI-040",
+  "amount": 68923.4,
+  "text": "I will pay on the 5th when salary comes in. I am not the borrower, stop calling.",
+  "attributes": {
+   "broken_promises_below_limit": true,
+   "charge_applied_in_error": false,
+   "contact_not_linked_to_borrower": true,
+   "hardship_documentation_received": true,
+   "payment_found_in_ledger": true,
+   "promise_within_policy_days": false
+  },
+  "flags": [],
+  "truth": {
+   "category": "wrong_party",
+   "outcome": "valid",
+   "info_missing": false
+  }
+ }
+]

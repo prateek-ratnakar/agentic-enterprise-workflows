@@ -1,0 +1,62 @@
+[
+  {
+    "id": "O2C-PR-01",
+    "category": "pricing_discrepancy",
+    "title": "Contract price governs",
+    "text": "Where the invoice price exceeds the contract price in force on the order date, the customer may deduct the difference and a credit memo is issued."
+  },
+  {
+    "id": "O2C-PR-02",
+    "category": "pricing_discrepancy",
+    "title": "Price disputes without variance",
+    "text": "Where the invoice price matches the contract price, a pricing deduction is invalid and the amount is rebilled with the contract price evidence."
+  },
+  {
+    "id": "O2C-PM-01",
+    "category": "promotion_allowance",
+    "title": "Trade promotion agreements",
+    "text": "Promotion and trade allowance deductions are valid only against a signed promotion agreement and matched to the trade promotion accrual."
+  },
+  {
+    "id": "O2C-PM-02",
+    "category": "promotion_allowance",
+    "title": "Proof of performance",
+    "text": "Display, feature ad and scan-back allowances require proof of performance before the deduction is accepted."
+  },
+  {
+    "id": "O2C-SH-01",
+    "category": "shortage",
+    "title": "Proof of delivery",
+    "text": "Shortage deductions are accepted when the signed proof of delivery records fewer units received than invoiced."
+  },
+  {
+    "id": "O2C-SH-02",
+    "category": "shortage",
+    "title": "Clean proof of delivery",
+    "text": "A clean signed proof of delivery showing full quantity received makes a shortage deduction invalid."
+  },
+  {
+    "id": "O2C-DM-01",
+    "category": "damaged_goods",
+    "title": "Damage claim window",
+    "text": "Damaged goods claims must be raised within 10 days of delivery with photo evidence of the damage."
+  },
+  {
+    "id": "O2C-DM-02",
+    "category": "damaged_goods",
+    "title": "Carrier recovery",
+    "text": "Accepted damage credits are recovered from the carrier where the damage occurred in transit."
+  },
+  {
+    "id": "O2C-CC-01",
+    "category": "compliance_chargeback",
+    "title": "Retailer routing guide",
+    "text": "Compliance chargebacks for late delivery, ASN errors or labeling are valid only where the supplier caused the violation under the retailer routing guide."
+  },
+  {
+    "id": "O2C-CC-02",
+    "category": "compliance_chargeback",
+    "title": "Carrier or retailer fault",
+    "text": "Chargebacks caused by carrier delay or retailer appointment changes are disputed with the delivery appointment record."
+  }
+]

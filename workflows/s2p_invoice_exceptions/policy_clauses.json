@@ -1,0 +1,62 @@
+[
+  {
+    "id": "S2P-PV-01",
+    "category": "price_variance",
+    "title": "Price tolerance",
+    "text": "Invoices with unit price variance within 2 percent of the purchase order price are released for payment."
+  },
+  {
+    "id": "S2P-PV-02",
+    "category": "price_variance",
+    "title": "Price above tolerance",
+    "text": "Price variance above tolerance is held and the supplier is asked for a credit note to the PO price."
+  },
+  {
+    "id": "S2P-QV-01",
+    "category": "quantity_variance",
+    "title": "Goods receipt match",
+    "text": "Payment is released only for the quantity recorded on the goods receipt note."
+  },
+  {
+    "id": "S2P-QV-02",
+    "category": "quantity_variance",
+    "title": "Partial delivery",
+    "text": "For partial delivery the received quantity is paid and a debit note is raised for the balance invoiced."
+  },
+  {
+    "id": "S2P-PO-01",
+    "category": "missing_po",
+    "title": "No PO no pay",
+    "text": "Invoices without a purchase order are not paid unless the budget owner approves a retrospective PO."
+  },
+  {
+    "id": "S2P-PO-02",
+    "category": "missing_po",
+    "title": "Retrospective approval",
+    "text": "Retrospective PO approval is a judgment call by the budget owner and is always reviewed by a person."
+  },
+  {
+    "id": "S2P-DU-01",
+    "category": "duplicate_invoice",
+    "title": "Duplicate check",
+    "text": "Invoices matching supplier, amount and date of an already paid invoice are rejected as duplicates."
+  },
+  {
+    "id": "S2P-DU-02",
+    "category": "duplicate_invoice",
+    "title": "Resubmitted invoices",
+    "text": "Resubmitted copies of an invoice are released only when the duplicate check confirms a distinct invoice."
+  },
+  {
+    "id": "S2P-TX-01",
+    "category": "tax_mismatch",
+    "title": "Tax code master",
+    "text": "The tax rate and HSN or tax code on the invoice must match the vendor and item master."
+  },
+  {
+    "id": "S2P-TX-02",
+    "category": "tax_mismatch",
+    "title": "Corrected tax invoice",
+    "text": "Invoices with a GST or VAT mismatch are held until the supplier issues a corrected tax invoice."
+  }
+]

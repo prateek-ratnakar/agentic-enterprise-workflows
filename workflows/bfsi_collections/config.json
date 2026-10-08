@@ -1,0 +1,124 @@
+{
+  "workflow_id": "bfsi_collections",
+  "display_name": "Retail Lending - Early-Bucket Collections Contact Resolution",
+  "industry": "Banking and Financial Services",
+  "process_family": "Lending lifecycle (credit to recovery)",
+  "process_step": "Collections > Early delinquency (1-30 days past due) > Customer response handling",
+  "currency": "INR",
+  "description": "A borrower in early delinquency responds to a reminder. The workflow decides the next action: book a promise to pay, stop collections, reverse a charge, or hand hardship and flagged cases to a trained officer.",
+  "categories": {
+    "promise_to_pay": {
+      "label": "Promise to pay",
+      "keywords": [
+        "will pay",
+        "salary",
+        "next week",
+        "promise",
+        "by friday",
+        "pay on"
+      ],
+      "valid_if": [
+        "broken_promises_below_limit",
+        "promise_within_policy_days"
+      ],
+      "on_valid": "Book promise to pay and pause outbound contact until the due date",
+      "on_invalid": "Decline new promise: send payment link and continue standard cadence",
+      "policy_query": "promise to pay broken promises policy days pause contact"
+    },
+    "already_paid": {
+      "label": "Claims already paid",
+      "keywords": [
+        "already paid",
+        "paid yesterday",
+        "transaction id",
+        "utr",
+        "receipt",
+        "upi"
+      ],
+      "valid_if": [
+        "payment_found_in_ledger"
+      ],
+      "on_valid": "Mark paid, stop collections contact and confirm to borrower",
+      "on_invalid": "Request payment proof and continue cadence",
+      "policy_query": "payment already made ledger reconciliation stop contact proof"
+    },
+    "charge_dispute": {
+      "label": "Charge dispute",
+      "keywords": [
+        "late fee",
+        "charge",
+        "penalty",
+        "bounce",
+        "wrong amount",
+        "dispute"
+      ],
+      "valid_if": [
+        "charge_applied_in_error"
+      ],
+      "on_valid": "Reverse the charge and correct the statement",
+      "on_invalid": "Explain the charge with the applicable schedule of charges",
+      "policy_query": "late fee penalty bounce charge schedule of charges reversal"
+    },
+    "hardship": {
+      "label": "Financial hardship",
+      "keywords": [
+        "lost my job",
+        "job loss",
+        "hospital",
+        "medical",
+        "illness",
+        "hardship",
+        "cannot pay"
+      ],
+      "valid_if": [
+        "hardship_documentation_received"
+      ],
+      "on_valid": "Refer for restructuring assessment and pause contact",
+      "on_invalid": "Offer hardship documentation checklist and pause contact 7 days",
+      "policy_query": "financial hardship restructuring assessment pause contact fair practice"
+    },
+    "wrong_party": {
+      "label": "Wrong party contacted",
+      "keywords": [
+        "wrong number",
+        "not my loan",
+        "do not know",
+        "not the borrower",
+        "who is this"
+      ],
+      "valid_if": [
+        "contact_not_linked_to_borrower"
+      ],
+      "on_valid": "Remove contact number, stop outreach and log third-party contact",
+      "on_invalid": "Verify identity through registered channel before any disclosure",
+      "policy_query": "wrong party third party contact disclosure remove number"
+    }
+  },
+  "human_only_categories": [
+    "hardship"
+  ],
+  "human_review_flags": [
+    "vulnerable_customer",
+    "complaint_escalated",
+    "legal_notice_issued"
+  ],
+  "thresholds": {
+    "min_confidence": 0.6,
+    "min_grounding_score": 0.3,
+    "auto_max_amount": 65000
+  },
+  "value_model": {
+    "_note": "ASSUMPTIONS for illustration. Replace with the lender's measured baseline before building a business case.",
+    "manual_minutes_per_case": 14,
+    "auto_minutes_per_case": 1,
+    "assisted_minutes_per_case": 8,
+    "pending_minutes_per_case": 3,
+    "manual_days_to_resolve": 5,
+    "auto_days_to_resolve": 0.2,
+    "assisted_days_to_resolve": 2,
+    "pending_days_to_resolve": 3,
+    "annual_volume": 400000,
+    "cost_per_hour": 450,
+    "invalid_amount_label": null
+  }
+}

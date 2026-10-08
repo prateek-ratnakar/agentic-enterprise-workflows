@@ -1,0 +1,87 @@
+<!DOCTYPE html><html lang='en'><head><meta charset='utf-8'><title>Retail Lending - Early-Bucket Collections Contact Resolution</title><style>
+body{font-family:Georgia,'Source Serif 4',serif;background:#FBFBF9;color:#131C2B;margin:0;padding:32px;line-height:1.5}
+h1{font-family:Arial,sans-serif;font-size:22px;margin:0 0 4px}
+h2{font-family:Arial,sans-serif;font-size:15px;margin:28px 0 8px;border-bottom:2px solid #131C2B;padding-bottom:4px}
+.sub{color:#5A6472;font-size:14px;max-width:880px}
+.note{background:#FFF7E8;border-left:3px solid #B4690E;padding:8px 12px;font-size:13px;margin:12px 0;max-width:880px}
+.tiles{display:flex;flex-wrap:wrap;max-width:1000px}
+.tile{border:1px solid #E4E2DA;background:#fff;padding:12px;width:205px;margin:0 10px 10px 0}
+.tile b{display:block;font-family:Arial,sans-serif;font-size:22px;color:#1E5E46}
+.tile span{font-size:12.5px;color:#5A6472}
+table{border-collapse:collapse;font-size:12.5px;width:100%;max-width:1180px;background:#fff}
+th,td{border:1px solid #E4E2DA;padding:5px 7px;text-align:left;vertical-align:top}
+th{background:#F1F0EA;font-family:Arial,sans-serif}
+.bar{height:10px;background:#1E5E46;display:inline-block}
+.bad{color:#9B2C2C;font-weight:bold}.ok{color:#1E5E46}
+</style></head><body>
+<h1>Retail Lending - Early-Bucket Collections Contact Resolution</h1>
+<p class='sub'>Banking and Financial Services | Lending lifecycle (credit to recovery) | Collections &gt; Early delinquency (1-30 days past due) &gt; Customer response handling</p>
+<p class='sub'>A borrower in early delinquency responds to a reminder. The workflow decides the next action: book a promise to pay, stop collections, reverse a charge, or hand hardship and flagged cases to a trained officer.</p>
+<div class='note'>Synthetic data. 40 generated cases; the human reviewer is simulated from ground truth the way a UAT reference set would be. Value figures use the labelled assumptions below, not client data.</div>
+<h2>Outcome</h2><div class='tiles'>
+<div class='tile'><b>47.5%</b><span>straight-through (auto-resolved)</span></div>
+<div class='tile'><b>52.5%</b><span>routed to a person by guardrails</span></div>
+<div class='tile'><b>0.0%</b><span>held for missing evidence</span></div>
+<div class='tile'><b>89.5%</b><span>auto-decision accuracy vs human reference</span></div>
+<div class='tile'><b>88.2%</b><span>agent recommendation matched reviewer</span></div>
+<div class='tile'><b>14 to 4.7 min</b><span>handling effort per case</span></div>
+<div class='tile'><b>5 to 1.1 days</b><span>time to resolve</span></div>
+<div class='tile'><b>85 tokens</b><span>grounded context per call (vs 299 full corpus)</span></div>
+</div>
+<h2>Why cases went to a person</h2><table><tr><th>Guardrail trigger</th><th>Cases</th><th></th></tr>
+<tr><td>Above auto-decision limit</td><td>13</td><td><span class='bar' style='width:156px'></span></td></tr>
+<tr><td>Human-only category</td><td>8</td><td><span class='bar' style='width:96px'></span></td></tr>
+<tr><td>Unclassified</td><td>4</td><td><span class='bar' style='width:48px'></span></td></tr>
+<tr><td>Account flag</td><td>2</td><td><span class='bar' style='width:24px'></span></td></tr>
+</table>
+<h2>Value case (annualized on assumptions)</h2>
+<div class='note'>ASSUMPTIONS for illustration. Replace with the lender&#x27;s measured baseline before building a business case.</div>
+<table><tr><th>Measure</th><th>Baseline (manual)</th><th>Agentic design</th></tr>
+<tr><td>Effort per case (minutes)</td><td>14</td><td>4.7</td></tr>
+<tr><td>Days to resolve</td><td>5</td><td>1.1</td></tr>
+<tr><td>Annual volume (assumed)</td><td colspan='2'>400,000 cases</td></tr>
+<tr><td>Annual effort released</td><td colspan='2'>62,167 hours</td></tr>
+<tr><td>Annual cost released at INR 450/hour</td><td colspan='2'>INR 27,975,000</td></tr>
+</table>
+<h2>Case audit trail</h2><table><tr><th>Case</th><th>Amount</th><th>Text</th><th>Intake</th><th>Route</th><th>Action</th><th>Cited clauses</th><th>Guardrail reasons</th><th>Check</th></tr>
+<tr><td>BFSI-001</td><td>10,894.19</td><td>Ok noted.</td><td>unclassified</td><td>human</td><td>Book promise to pay and pause outbound contact until the due date</td><td>-</td><td>unclassified: no category signal</td><td>no proposal</td></tr>
+<tr><td>BFSI-002</td><td>45,092.13</td><td>I already paid yesterday through UPI, transaction id attached.</td><td>already_paid (1.00)</td><td>auto</td><td>Mark paid, stop collections contact and confirm to borrower</td><td>BFS-PAY-01, BFS-PAY-02</td><td>-</td><td><span class='ok'>correct</span></td></tr>
+<tr><td>BFSI-003</td><td>39,385.74</td><td>I already paid yesterday through UPI, transaction id attached. Penalty charge looks incorrect, please check.</td><td>already_paid (0.67)</td><td>auto</td><td>Mark paid, stop collections contact and confirm to borrower</td><td>BFS-PAY-01, BFS-PAY-02</td><td>-</td><td><span class='bad'>error</span></td></tr>
+<tr><td>BFSI-004</td><td>35,777.33</td><td>I lost my job last month and cannot pay right now.</td><td>hardship (1.00)</td><td>human</td><td>Refer for restructuring assessment and pause contact</td><td>BFS-HRD-01, BFS-HRD-02</td><td>human-only category: hardship</td><td>agent agreed</td></tr>
+<tr><td>BFSI-005</td><td>67,837.55</td><td>Ok noted.</td><td>unclassified</td><td>human</td><td>Verify identity through registered channel before any disclosure</td><td>-</td><td>unclassified: no category signal; amount 67837.55 above auto limit 65000</td><td>no proposal</td></tr>
+<tr><td>BFSI-006</td><td>39,088.84</td><td>I will pay on the 5th when salary comes in.</td><td>promise_to_pay (1.00)</td><td>auto</td><td>Book promise to pay and pause outbound contact until the due date</td><td>BFS-PTP-01, BFS-PTP-02</td><td>-</td><td><span class='ok'>correct</span></td></tr>
+<tr><td>BFSI-007</td><td>178,313.58</td><td>I already paid yesterday through UPI, transaction id attached.</td><td>already_paid (1.00)</td><td>human</td><td>Mark paid, stop collections contact and confirm to borrower</td><td>BFS-PAY-01, BFS-PAY-02</td><td>amount 178313.58 above auto limit 65000</td><td>agent agreed</td></tr>
+<tr><td>BFSI-008</td><td>25,426.73</td><td>Bounce charge applied twice, wrong amount on statement.</td><td>charge_dispute (1.00)</td><td>auto</td><td>Reverse the charge and correct the statement</td><td>BFS-CHG-01, BFS-CHG-02</td><td>-</td><td><span class='ok'>correct</span></td></tr>
+<tr><td>BFSI-009</td><td>161,669.01</td><td>Facing hardship after job loss, need time.</td><td>hardship (1.00)</td><td>human</td><td>Refer for restructuring assessment and pause contact</td><td>BFS-HRD-01</td><td>human-only category: hardship; amount 161669.01 above auto limit 65000</td><td>agent agreed</td></tr>
+<tr><td>BFSI-010</td><td>44,783.02</td><td>Wrong number, this is not my loan.</td><td>wrong_party (1.00)</td><td>auto</td><td>Remove contact number, stop outreach and log third-party contact</td><td>BFS-WRP-01</td><td>-</td><td><span class='ok'>correct</span></td></tr>
+<tr><td>BFSI-011</td><td>14,952.93</td><td>I will pay on the 5th when salary comes in.</td><td>promise_to_pay (1.00)</td><td>auto</td><td>Decline new promise: send payment link and continue standard cadence</td><td>BFS-PTP-01, BFS-PTP-02</td><td>-</td><td><span class='ok'>correct</span></td></tr>
+<tr><td>BFSI-012</td><td>183,599.00</td><td>This is already paid, check your records.</td><td>already_paid (1.00)</td><td>human</td><td>Mark paid, stop collections contact and confirm to borrower</td><td>BFS-PAY-01, BFS-PAY-02</td><td>amount 183599.0 above auto limit 65000</td><td>agent agreed</td></tr>
+<tr><td>BFSI-013</td><td>60,230.35</td><td>Why is there a late fee when I paid on the due date? I dispute this charge.</td><td>charge_dispute (1.00)</td><td>auto</td><td>Explain the charge with the applicable schedule of charges</td><td>BFS-CHG-01, BFS-CHG-02</td><td>-</td><td><span class='ok'>correct</span></td></tr>
+<tr><td>BFSI-014</td><td>194,600.08</td><td>Facing hardship after job loss, need time.</td><td>hardship (1.00)</td><td>human</td><td>Refer for restructuring assessment and pause contact</td><td>BFS-HRD-01</td><td>human-only category: hardship; amount 194600.08 above auto limit 65000</td><td>agent agreed</td></tr>
+<tr><td>BFSI-015</td><td>33,528.72</td><td>I do not know this person, who is this?</td><td>wrong_party (1.00)</td><td>auto</td><td>Verify identity through registered channel before any disclosure</td><td>BFS-WRP-01</td><td>-</td><td><span class='ok'>correct</span></td></tr>
+<tr><td>BFSI-016</td><td>13,654.92</td><td>I will pay on the 5th when salary comes in.</td><td>promise_to_pay (1.00)</td><td>auto</td><td>Decline new promise: send payment link and continue standard cadence</td><td>BFS-PTP-01, BFS-PTP-02</td><td>-</td><td><span class='ok'>correct</span></td></tr>
+<tr><td>BFSI-017</td><td>132,057.13</td><td>Penalty charge looks incorrect, please check. This is already paid, check your records.</td><td>charge_dispute (0.67)</td><td>human</td><td>Request payment proof and continue cadence</td><td>BFS-CHG-01, BFS-CHG-02</td><td>amount 132057.13 above auto limit 65000</td><td>reviewer overrode</td></tr>
+<tr><td>BFSI-018</td><td>65,943.57</td><td>Why is there a late fee when I paid on the due date? I dispute this charge.</td><td>charge_dispute (1.00)</td><td>human</td><td>Explain the charge with the applicable schedule of charges</td><td>BFS-CHG-01, BFS-CHG-02</td><td>amount 65943.57 above auto limit 65000</td><td>agent agreed</td></tr>
+<tr><td>BFSI-019</td><td>46,292.15</td><td>I lost my job last month and cannot pay right now.</td><td>hardship (1.00)</td><td>human</td><td>Refer for restructuring assessment and pause contact</td><td>BFS-HRD-01, BFS-HRD-02</td><td>human-only category: hardship</td><td>agent agreed</td></tr>
+<tr><td>BFSI-020</td><td>73,349.09</td><td>I do not know this person, who is this?</td><td>wrong_party (1.00)</td><td>human</td><td>Remove contact number, stop outreach and log third-party contact</td><td>BFS-WRP-01</td><td>amount 73349.09 above auto limit 65000</td><td>agent agreed</td></tr>
+<tr><td>BFSI-021</td><td>104,310.62</td><td>Call me later.</td><td>unclassified</td><td>human</td><td>Decline new promise: send payment link and continue standard cadence</td><td>-</td><td>unclassified: no category signal; amount 104310.62 above auto limit 65000</td><td>no proposal</td></tr>
+<tr><td>BFSI-022</td><td>196,105.37</td><td>Paid the EMI, here is the UTR and receipt.</td><td>already_paid (1.00)</td><td>human</td><td>Request payment proof and continue cadence</td><td>BFS-PAY-01, BFS-PAY-02</td><td>amount 196105.37 above auto limit 65000</td><td>agent agreed</td></tr>
+<tr><td>BFSI-023</td><td>31,812.39</td><td>Bounce charge applied twice, wrong amount on statement.</td><td>charge_dispute (1.00)</td><td>auto</td><td>Reverse the charge and correct the statement</td><td>BFS-CHG-01, BFS-CHG-02</td><td>-</td><td><span class='ok'>correct</span></td></tr>
+<tr><td>BFSI-024</td><td>24,665.95</td><td>I lost my job last month and cannot pay right now.</td><td>hardship (1.00)</td><td>human</td><td>Refer for restructuring assessment and pause contact</td><td>BFS-HRD-01, BFS-HRD-02</td><td>human-only category: hardship</td><td>agent agreed</td></tr>
+<tr><td>BFSI-025</td><td>25,208.73</td><td>Wrong number, this is not my loan.</td><td>wrong_party (1.00)</td><td>auto</td><td>Remove contact number, stop outreach and log third-party contact</td><td>BFS-WRP-01</td><td>-</td><td><span class='ok'>correct</span></td></tr>
+<tr><td>BFSI-026</td><td>79,567.25</td><td>I will pay on the 5th when salary comes in.</td><td>promise_to_pay (1.00)</td><td>human</td><td>Book promise to pay and pause outbound contact until the due date</td><td>BFS-PTP-01, BFS-PTP-02</td><td>amount 79567.25 above auto limit 65000</td><td>agent agreed</td></tr>
+<tr><td>BFSI-027</td><td>26,037.02</td><td>I already paid yesterday through UPI, transaction id attached.</td><td>already_paid (1.00)</td><td>auto</td><td>Mark paid, stop collections contact and confirm to borrower</td><td>BFS-PAY-01, BFS-PAY-02</td><td>-</td><td><span class='ok'>correct</span></td></tr>
+<tr><td>BFSI-028</td><td>53,408.06</td><td>Why is there a late fee when I paid on the due date? I dispute this charge.</td><td>charge_dispute (1.00)</td><td>auto</td><td>Reverse the charge and correct the statement</td><td>BFS-CHG-01, BFS-CHG-02</td><td>-</td><td><span class='ok'>correct</span></td></tr>
+<tr><td>BFSI-029</td><td>13,866.21</td><td>I am not the borrower, stop calling. My father is in hospital, medical expenses, I cannot pay this month.</td><td>hardship (0.75)</td><td>human</td><td>Refer for restructuring assessment and pause contact</td><td>BFS-HRD-01, BFS-HRD-02</td><td>human-only category: hardship; account flag: legal_notice_issued</td><td>agent agreed</td></tr>
+<tr><td>BFSI-030</td><td>37,882.67</td><td>Wrong number, this is not my loan.</td><td>wrong_party (1.00)</td><td>auto</td><td>Remove contact number, stop outreach and log third-party contact</td><td>BFS-WRP-01</td><td>-</td><td><span class='ok'>correct</span></td></tr>
+<tr><td>BFSI-031</td><td>42,359.91</td><td>Ok noted.</td><td>unclassified</td><td>human</td><td>Book promise to pay and pause outbound contact until the due date</td><td>-</td><td>unclassified: no category signal; account flag: complaint_escalated</td><td>no proposal</td></tr>
+<tr><td>BFSI-032</td><td>41,558.50</td><td>This is already paid, check your records.</td><td>already_paid (1.00)</td><td>auto</td><td>Request payment proof and continue cadence</td><td>BFS-PAY-01, BFS-PAY-02</td><td>-</td><td><span class='ok'>correct</span></td></tr>
+<tr><td>BFSI-033</td><td>71,855.06</td><td>Why is there a late fee when I paid on the due date? I dispute this charge.</td><td>charge_dispute (1.00)</td><td>human</td><td>Explain the charge with the applicable schedule of charges</td><td>BFS-CHG-01, BFS-CHG-02</td><td>amount 71855.06 above auto limit 65000</td><td>agent agreed</td></tr>
+<tr><td>BFSI-034</td><td>24,048.26</td><td>I lost my job last month and cannot pay right now.</td><td>hardship (1.00)</td><td>human</td><td>Refer for restructuring assessment and pause contact</td><td>BFS-HRD-01, BFS-HRD-02</td><td>human-only category: hardship</td><td>agent agreed</td></tr>
+<tr><td>BFSI-035</td><td>60,226.97</td><td>I am not the borrower, stop calling.</td><td>wrong_party (1.00)</td><td>auto</td><td>Verify identity through registered channel before any disclosure</td><td>BFS-WRP-01</td><td>-</td><td><span class='ok'>correct</span></td></tr>
+<tr><td>BFSI-036</td><td>40,663.97</td><td>Paid the EMI, here is the UTR and receipt. Can pay by friday, please stop calling till then.</td><td>already_paid (0.67)</td><td>auto</td><td>Mark paid, stop collections contact and confirm to borrower</td><td>BFS-PAY-01, BFS-PAY-02</td><td>-</td><td><span class='bad'>error</span></td></tr>
+<tr><td>BFSI-037</td><td>39,943.83</td><td>I already paid yesterday through UPI, transaction id attached.</td><td>already_paid (1.00)</td><td>auto</td><td>Request payment proof and continue cadence</td><td>BFS-PAY-01, BFS-PAY-02</td><td>-</td><td><span class='ok'>correct</span></td></tr>
+<tr><td>BFSI-038</td><td>25,247.16</td><td>I do not know this person, who is this? Bounce charge applied twice, wrong amount on statement.</td><td>charge_dispute (0.60)</td><td>auto</td><td>Explain the charge with the applicable schedule of charges</td><td>BFS-CHG-01, BFS-CHG-02</td><td>-</td><td><span class='ok'>correct</span></td></tr>
+<tr><td>BFSI-039</td><td>29,180.65</td><td>My father is in hospital, medical expenses, I cannot pay this month.</td><td>hardship (1.00)</td><td>human</td><td>Refer for restructuring assessment and pause contact</td><td>BFS-HRD-01, BFS-HRD-02</td><td>human-only category: hardship</td><td>agent agreed</td></tr>
+<tr><td>BFSI-040</td><td>68,923.40</td><td>I will pay on the 5th when salary comes in. I am not the borrower, stop calling.</td><td>promise_to_pay (0.75)</td><td>human</td><td>Remove contact number, stop outreach and log third-party contact</td><td>BFS-PTP-01, BFS-PTP-02</td><td>amount 68923.4 above auto limit 65000</td><td>reviewer overrode</td></tr>
+</table></body></html>

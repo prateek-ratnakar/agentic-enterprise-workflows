@@ -1,0 +1,88 @@
+<!DOCTYPE html><html lang='en'><head><meta charset='utf-8'><title>Order to Cash - Customer Deductions and Disputes</title><style>
+body{font-family:Georgia,'Source Serif 4',serif;background:#FBFBF9;color:#131C2B;margin:0;padding:32px;line-height:1.5}
+h1{font-family:Arial,sans-serif;font-size:22px;margin:0 0 4px}
+h2{font-family:Arial,sans-serif;font-size:15px;margin:28px 0 8px;border-bottom:2px solid #131C2B;padding-bottom:4px}
+.sub{color:#5A6472;font-size:14px;max-width:880px}
+.note{background:#FFF7E8;border-left:3px solid #B4690E;padding:8px 12px;font-size:13px;margin:12px 0;max-width:880px}
+.tiles{display:flex;flex-wrap:wrap;max-width:1000px}
+.tile{border:1px solid #E4E2DA;background:#fff;padding:12px;width:205px;margin:0 10px 10px 0}
+.tile b{display:block;font-family:Arial,sans-serif;font-size:22px;color:#1E5E46}
+.tile span{font-size:12.5px;color:#5A6472}
+table{border-collapse:collapse;font-size:12.5px;width:100%;max-width:1180px;background:#fff}
+th,td{border:1px solid #E4E2DA;padding:5px 7px;text-align:left;vertical-align:top}
+th{background:#F1F0EA;font-family:Arial,sans-serif}
+.bar{height:10px;background:#1E5E46;display:inline-block}
+.bad{color:#9B2C2C;font-weight:bold}.ok{color:#1E5E46}
+</style></head><body>
+<h1>Order to Cash - Customer Deductions and Disputes</h1>
+<p class='sub'>Consumer Goods and Retail | Order to Cash | Collections &gt; Deduction management &gt; Dispute resolution</p>
+<p class='sub'>A retailer short-pays an invoice and cites a reason. The workflow decides whether the deduction is valid (issue credit) or invalid (dispute and rebill), and routes judgment calls to an analyst.</p>
+<div class='note'>Synthetic data. 40 generated cases; the human reviewer is simulated from ground truth the way a UAT reference set would be. Value figures use the labelled assumptions below, not client data.</div>
+<h2>Outcome</h2><div class='tiles'>
+<div class='tile'><b>57.5%</b><span>straight-through (auto-resolved)</span></div>
+<div class='tile'><b>37.5%</b><span>routed to a person by guardrails</span></div>
+<div class='tile'><b>5.0%</b><span>held for missing evidence</span></div>
+<div class='tile'><b>91.3%</b><span>auto-decision accuracy vs human reference</span></div>
+<div class='tile'><b>81.8%</b><span>agent recommendation matched reviewer</span></div>
+<div class='tile'><b>35 to 6.0 min</b><span>handling effort per case</span></div>
+<div class='tile'><b>24 to 3.4 days</b><span>time to resolve</span></div>
+<div class='tile'><b>88 tokens</b><span>grounded context per call (vs 302 full corpus)</span></div>
+</div>
+<h2>Why cases went to a person</h2><table><tr><th>Guardrail trigger</th><th>Cases</th><th></th></tr>
+<tr><td>Above auto-decision limit</td><td>10</td><td><span class='bar' style='width:120px'></span></td></tr>
+<tr><td>Account flag</td><td>3</td><td><span class='bar' style='width:36px'></span></td></tr>
+<tr><td>Low confidence</td><td>3</td><td><span class='bar' style='width:36px'></span></td></tr>
+<tr><td>Unclassified</td><td>2</td><td><span class='bar' style='width:24px'></span></td></tr>
+</table>
+<h2>Value case (annualized on assumptions)</h2>
+<div class='note'>ASSUMPTIONS for illustration. Replace with the client&#x27;s measured baseline before building a business case.</div>
+<table><tr><th>Measure</th><th>Baseline (manual)</th><th>Agentic design</th></tr>
+<tr><td>Effort per case (minutes)</td><td>35</td><td>6.0</td></tr>
+<tr><td>Days to resolve</td><td>24</td><td>3.4</td></tr>
+<tr><td>Annual volume (assumed)</td><td colspan='2'>60,000 cases</td></tr>
+<tr><td>Annual effort released</td><td colspan='2'>29,050 hours</td></tr>
+<tr><td>Annual cost released at USD 22/hour</td><td colspan='2'>USD 639,100</td></tr>
+<tr><td>Invalid deductions identified for recovery (sample)</td><td colspan='2'>USD 78,094.47</td></tr>
+</table>
+<h2>Case audit trail</h2><table><tr><th>Case</th><th>Amount</th><th>Text</th><th>Intake</th><th>Route</th><th>Action</th><th>Cited clauses</th><th>Guardrail reasons</th><th>Check</th></tr>
+<tr><td>O2C-001</td><td>673.13</td><td>Short pay on INV-52445, reason to follow.</td><td>shortage (1.00)</td><td>auto</td><td>Accept: credit shortage confirmed on proof of delivery</td><td>O2C-SH-02, O2C-SH-01</td><td>-</td><td><span class='bad'>error</span></td></tr>
+<tr><td>O2C-002</td><td>7,372.72</td><td>Scan-back promo funds deducted from INV-39260 as agreed with your rep.</td><td>promotion_allowance (1.00)</td><td>auto</td><td>Accept: match to trade promotion accrual and close</td><td>O2C-PM-01, O2C-PM-02</td><td>-</td><td><span class='ok'>correct</span></td></tr>
+<tr><td>O2C-003</td><td>2,802.94</td><td>Received less than invoiced on INV-86231, 4 missing cases.</td><td>shortage (1.00)</td><td>auto</td><td>Accept: credit shortage confirmed on proof of delivery</td><td>O2C-SH-01, O2C-SH-02</td><td>-</td><td><span class='ok'>correct</span></td></tr>
+<tr><td>O2C-004</td><td>8,663.87</td><td>Damaged pallet on INV-41994, broken cartons, photos attached.</td><td>damaged_goods (1.00)</td><td>human</td><td>Dispute: claim outside window or without evidence</td><td>O2C-DM-01</td><td>amount 8663.87 above auto limit 7500; account flag: legal_hold</td><td>agent agreed</td></tr>
+<tr><td>O2C-005</td><td>20,095.98</td><td>Labeling violation per routing guide on INV-54580, chargeback applied.</td><td>compliance_chargeback (1.00)</td><td>human</td><td>Dispute: carrier or retailer caused the violation</td><td>O2C-CC-01</td><td>amount 20095.98 above auto limit 7500</td><td>agent agreed</td></tr>
+<tr><td>O2C-006</td><td>2,608.88</td><td>INV-60566: 12 units arrived crushed and leaking, deducting damaged goods. Deducting the cost difference on INV-60566, you overcharged versus contract pricing.</td><td>damaged_goods (0.57)</td><td>human</td><td>Dispute: rebill with contract price evidence</td><td>O2C-DM-01</td><td>low confidence 0.57 &lt; 0.60</td><td>reviewer overrode</td></tr>
+<tr><td>O2C-007</td><td>2,645.09</td><td>Spoiled product received on INV-66429, deduction for damage. Trade allowance for feature ad week 14 taken against INV-66429.</td><td>damaged_goods (0.50)</td><td>human</td><td>Accept: match to trade promotion accrual and close</td><td>O2C-DM-01</td><td>low confidence 0.50 &lt; 0.60</td><td>reviewer overrode</td></tr>
+<tr><td>O2C-008</td><td>4,411.48</td><td>Short shipment against INV-80069, deducting the missing quantity.</td><td>shortage (1.00)</td><td>auto</td><td>Dispute: signed proof of delivery shows full quantity</td><td>O2C-SH-02, O2C-SH-01</td><td>-</td><td><span class='ok'>correct</span></td></tr>
+<tr><td>O2C-009</td><td>1,464.67</td><td>INV-34983: 12 units arrived crushed and leaking, deducting damaged goods.</td><td>damaged_goods (1.00)</td><td>pending_info</td><td>Request missing evidence: damage_evidence_received</td><td>O2C-DM-01</td><td>-</td><td>held</td></tr>
+<tr><td>O2C-010</td><td>1,578.73</td><td>Chargeback for late delivery outside appointment window, INV-55533.</td><td>compliance_chargeback (1.00)</td><td>human</td><td>Accept: chargeback valid under retailer routing guide</td><td>O2C-CC-01</td><td>account flag: legal_hold</td><td>agent agreed</td></tr>
+<tr><td>O2C-011</td><td>4,598.87</td><td>Short-paid invoice INV-29215: unit cost billed above the rate agreed in our contract.</td><td>pricing_discrepancy (0.67)</td><td>auto</td><td>Accept: issue credit memo for the price difference</td><td>O2C-PR-01, O2C-PR-02</td><td>-</td><td><span class='ok'>correct</span></td></tr>
+<tr><td>O2C-012</td><td>15,037.57</td><td>Received less than invoiced on INV-90377, 4 missing cases. Trade allowance for feature ad week 14 taken against INV-90377.</td><td>promotion_allowance (0.50)</td><td>human</td><td>Accept: match to trade promotion accrual and close</td><td>O2C-PM-01, O2C-PM-02</td><td>low confidence 0.50 &lt; 0.60; amount 15037.57 above auto limit 7500</td><td>agent agreed</td></tr>
+<tr><td>O2C-013</td><td>5,841.73</td><td>Short pay on INV-55812, reason to follow.</td><td>shortage (1.00)</td><td>auto</td><td>Accept: credit shortage confirmed on proof of delivery</td><td>O2C-SH-02, O2C-SH-01</td><td>-</td><td><span class='ok'>correct</span></td></tr>
+<tr><td>O2C-014</td><td>1,654.53</td><td>Deduction taken on INV-25716, see remittance.</td><td>unclassified</td><td>human</td><td>Accept: credit damage and file carrier claim</td><td>-</td><td>unclassified: no category signal</td><td>no proposal</td></tr>
+<tr><td>O2C-015</td><td>8,412.58</td><td>Chargeback for late delivery outside appointment window, INV-29811.</td><td>compliance_chargeback (1.00)</td><td>human</td><td>Accept: chargeback valid under retailer routing guide</td><td>O2C-CC-01</td><td>amount 8412.58 above auto limit 7500</td><td>no proposal</td></tr>
+<tr><td>O2C-016</td><td>4,723.33</td><td>Received less than invoiced on INV-35533, 4 missing cases. Deducting the cost difference on INV-35533, you overcharged versus contract pricing.</td><td>pricing_discrepancy (0.60)</td><td>auto</td><td>Dispute: rebill with contract price evidence</td><td>O2C-PR-01, O2C-PR-02</td><td>-</td><td><span class='ok'>correct</span></td></tr>
+<tr><td>O2C-017</td><td>3,034.94</td><td>Deduction on INV-75752 for the spring promotion display allowance.</td><td>promotion_allowance (1.00)</td><td>auto</td><td>Accept: match to trade promotion accrual and close</td><td>O2C-PM-01, O2C-PM-02</td><td>-</td><td><span class='ok'>correct</span></td></tr>
+<tr><td>O2C-018</td><td>4,624.15</td><td>Received less than invoiced on INV-82802, 4 missing cases.</td><td>shortage (1.00)</td><td>auto</td><td>Dispute: signed proof of delivery shows full quantity</td><td>O2C-SH-01, O2C-SH-02</td><td>-</td><td><span class='ok'>correct</span></td></tr>
+<tr><td>O2C-019</td><td>1,226.35</td><td>Spoiled product received on INV-46331, deduction for damage.</td><td>damaged_goods (1.00)</td><td>auto</td><td>Dispute: claim outside window or without evidence</td><td>O2C-DM-01</td><td>-</td><td><span class='ok'>correct</span></td></tr>
+<tr><td>O2C-020</td><td>11,964.44</td><td>Chargeback for late delivery outside appointment window, INV-19508.</td><td>compliance_chargeback (1.00)</td><td>human</td><td>Accept: chargeback valid under retailer routing guide</td><td>O2C-CC-01</td><td>amount 11964.44 above auto limit 7500</td><td>agent agreed</td></tr>
+<tr><td>O2C-021</td><td>310.03</td><td>Short shipment against INV-62200, deducting the missing quantity. Short-paid invoice INV-62200: unit cost billed above the rate agreed in our contract.</td><td>pricing_discrepancy (0.67)</td><td>auto</td><td>Accept: issue credit memo for the price difference</td><td>O2C-PR-01, O2C-PR-02</td><td>-</td><td><span class='ok'>correct</span></td></tr>
+<tr><td>O2C-022</td><td>7,668.85</td><td>Deduction on INV-91779 for the spring promotion display allowance.</td><td>promotion_allowance (1.00)</td><td>human</td><td>Accept: match to trade promotion accrual and close</td><td>O2C-PM-01, O2C-PM-02</td><td>amount 7668.85 above auto limit 7500</td><td>agent agreed</td></tr>
+<tr><td>O2C-023</td><td>7,244.41</td><td>Short shipment against INV-43896, deducting the missing quantity.</td><td>shortage (1.00)</td><td>auto</td><td>Accept: credit shortage confirmed on proof of delivery</td><td>O2C-SH-02, O2C-SH-01</td><td>-</td><td><span class='ok'>correct</span></td></tr>
+<tr><td>O2C-024</td><td>595.86</td><td>INV-39151: 12 units arrived crushed and leaking, deducting damaged goods.</td><td>damaged_goods (1.00)</td><td>auto</td><td>Accept: credit damage and file carrier claim</td><td>O2C-DM-01</td><td>-</td><td><span class='ok'>correct</span></td></tr>
+<tr><td>O2C-025</td><td>1,826.69</td><td>Labeling violation per routing guide on INV-50893, chargeback applied.</td><td>compliance_chargeback (1.00)</td><td>auto</td><td>Accept: chargeback valid under retailer routing guide</td><td>O2C-CC-01</td><td>-</td><td><span class='ok'>correct</span></td></tr>
+<tr><td>O2C-026</td><td>5,778.40</td><td>Pricing on INV-68596 does not match the price list we signed, deduction taken.</td><td>pricing_discrepancy (1.00)</td><td>auto</td><td>Accept: issue credit memo for the price difference</td><td>O2C-PR-02, O2C-PR-01</td><td>-</td><td><span class='ok'>correct</span></td></tr>
+<tr><td>O2C-027</td><td>6,280.27</td><td>Deduction taken on INV-55554, see remittance.</td><td>unclassified</td><td>human</td><td>Accept: match to trade promotion accrual and close</td><td>-</td><td>unclassified: no category signal; account flag: key_account</td><td>no proposal</td></tr>
+<tr><td>O2C-028</td><td>2,618.52</td><td>Received less than invoiced on INV-30648, 4 missing cases.</td><td>shortage (1.00)</td><td>pending_info</td><td>Request missing evidence: pod_shows_shortage</td><td>O2C-SH-01, O2C-SH-02</td><td>-</td><td>held</td></tr>
+<tr><td>O2C-029</td><td>11,095.90</td><td>INV-42529: 12 units arrived crushed and leaking, deducting damaged goods.</td><td>damaged_goods (1.00)</td><td>human</td><td>Accept: credit damage and file carrier claim</td><td>O2C-DM-01</td><td>amount 11095.9 above auto limit 7500</td><td>agent agreed</td></tr>
+<tr><td>O2C-030</td><td>4,624.04</td><td>Chargeback for late delivery outside appointment window, INV-88192.</td><td>compliance_chargeback (1.00)</td><td>auto</td><td>Accept: chargeback valid under retailer routing guide</td><td>O2C-CC-01</td><td>-</td><td><span class='ok'>correct</span></td></tr>
+<tr><td>O2C-031</td><td>7,547.02</td><td>Short-paid invoice INV-76108: unit cost billed above the rate agreed in our contract.</td><td>pricing_discrepancy (0.67)</td><td>human</td><td>Accept: issue credit memo for the price difference</td><td>O2C-PR-01, O2C-PR-02</td><td>amount 7547.02 above auto limit 7500</td><td>agent agreed</td></tr>
+<tr><td>O2C-032</td><td>7,311.59</td><td>Scan-back promo funds deducted from INV-92282 as agreed with your rep.</td><td>promotion_allowance (1.00)</td><td>auto</td><td>Dispute: request proof of performance or deny against agreement</td><td>O2C-PM-01, O2C-PM-02</td><td>-</td><td><span class='ok'>correct</span></td></tr>
+<tr><td>O2C-033</td><td>5,457.39</td><td>Received less than invoiced on INV-40773, 4 missing cases.</td><td>shortage (1.00)</td><td>auto</td><td>Accept: credit shortage confirmed on proof of delivery</td><td>O2C-SH-01, O2C-SH-02</td><td>-</td><td><span class='ok'>correct</span></td></tr>
+<tr><td>O2C-034</td><td>4,273.19</td><td>Damaged pallet on INV-95397, broken cartons, photos attached.</td><td>damaged_goods (1.00)</td><td>auto</td><td>Accept: credit damage and file carrier claim</td><td>O2C-DM-01</td><td>-</td><td><span class='ok'>correct</span></td></tr>
+<tr><td>O2C-035</td><td>5,296.03</td><td>Compliance fine on INV-81968: ASN sent after the truck arrived.</td><td>compliance_chargeback (1.00)</td><td>auto</td><td>Accept: chargeback valid under retailer routing guide</td><td>O2C-CC-01</td><td>-</td><td><span class='ok'>correct</span></td></tr>
+<tr><td>O2C-036</td><td>18,201.44</td><td>Deducting the cost difference on INV-78690, you overcharged versus contract pricing.</td><td>pricing_discrepancy (1.00)</td><td>human</td><td>Accept: issue credit memo for the price difference</td><td>O2C-PR-01, O2C-PR-02</td><td>amount 18201.44 above auto limit 7500</td><td>no proposal</td></tr>
+<tr><td>O2C-037</td><td>3,602.93</td><td>Trade allowance for feature ad week 14 taken against INV-28442.</td><td>promotion_allowance (1.00)</td><td>auto</td><td>Dispute: request proof of performance or deny against agreement</td><td>O2C-PM-01, O2C-PM-02</td><td>-</td><td><span class='ok'>correct</span></td></tr>
+<tr><td>O2C-038</td><td>3,454.14</td><td>Shortage on delivery for INV-20013, fewer units than the packing list.</td><td>shortage (1.00)</td><td>auto</td><td>Dispute: signed proof of delivery shows full quantity</td><td>O2C-SH-01, O2C-SH-02</td><td>-</td><td><span class='ok'>correct</span></td></tr>
+<tr><td>O2C-039</td><td>1,661.25</td><td>Labeling violation per routing guide on INV-13802, chargeback applied. Spoiled product received on INV-13802, deduction for damage.</td><td>compliance_chargeback (0.67)</td><td>auto</td><td>Dispute: carrier or retailer caused the violation</td><td>O2C-CC-01</td><td>-</td><td><span class='bad'>error</span></td></tr>
+<tr><td>O2C-040</td><td>15,710.52</td><td>Labeling violation per routing guide on INV-46929, chargeback applied.</td><td>compliance_chargeback (1.00)</td><td>human</td><td>Dispute: carrier or retailer caused the violation</td><td>O2C-CC-01</td><td>amount 15710.52 above auto limit 7500</td><td>agent agreed</td></tr>
+</table></body></html>

@@ -1,0 +1,808 @@
+[
+ {
+  "id": "O2C-001",
+  "amount": 673.13,
+  "text": "Short pay on INV-52445, reason to follow.",
+  "attributes": {
+   "claim_within_window": false,
+   "damage_evidence_received": true,
+   "invoice_price_exceeds_contract": null,
+   "performance_proof_received": true,
+   "pod_shows_shortage": true,
+   "promo_agreement_on_file": true,
+   "supplier_fault_confirmed": true
+  },
+  "flags": [],
+  "truth": {
+   "category": "pricing_discrepancy",
+   "outcome": "valid",
+   "info_missing": true
+  }
+ },
+ {
+  "id": "O2C-002",
+  "amount": 7372.72,
+  "text": "Scan-back promo funds deducted from INV-39260 as agreed with your rep.",
+  "attributes": {
+   "claim_within_window": false,
+   "damage_evidence_received": true,
+   "invoice_price_exceeds_contract": true,
+   "performance_proof_received": true,
+   "pod_shows_shortage": true,
+   "promo_agreement_on_file": true,
+   "supplier_fault_confirmed": true
+  },
+  "flags": [],
+  "truth": {
+   "category": "promotion_allowance",
+   "outcome": "valid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "O2C-003",
+  "amount": 2802.94,
+  "text": "Received less than invoiced on INV-86231, 4 missing cases.",
+  "attributes": {
+   "claim_within_window": true,
+   "damage_evidence_received": true,
+   "invoice_price_exceeds_contract": true,
+   "performance_proof_received": true,
+   "pod_shows_shortage": true,
+   "promo_agreement_on_file": false,
+   "supplier_fault_confirmed": true
+  },
+  "flags": [],
+  "truth": {
+   "category": "shortage",
+   "outcome": "valid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "O2C-004",
+  "amount": 8663.87,
+  "text": "Damaged pallet on INV-41994, broken cartons, photos attached.",
+  "attributes": {
+   "claim_within_window": true,
+   "damage_evidence_received": false,
+   "invoice_price_exceeds_contract": false,
+   "performance_proof_received": true,
+   "pod_shows_shortage": false,
+   "promo_agreement_on_file": true,
+   "supplier_fault_confirmed": true
+  },
+  "flags": [
+   "legal_hold"
+  ],
+  "truth": {
+   "category": "damaged_goods",
+   "outcome": "invalid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "O2C-005",
+  "amount": 20095.98,
+  "text": "Labeling violation per routing guide on INV-54580, chargeback applied.",
+  "attributes": {
+   "claim_within_window": true,
+   "damage_evidence_received": false,
+   "invoice_price_exceeds_contract": true,
+   "performance_proof_received": true,
+   "pod_shows_shortage": true,
+   "promo_agreement_on_file": false,
+   "supplier_fault_confirmed": false
+  },
+  "flags": [],
+  "truth": {
+   "category": "compliance_chargeback",
+   "outcome": "invalid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "O2C-006",
+  "amount": 2608.88,
+  "text": "INV-60566: 12 units arrived crushed and leaking, deducting damaged goods. Deducting the cost difference on INV-60566, you overcharged versus contract pricing.",
+  "attributes": {
+   "claim_within_window": true,
+   "damage_evidence_received": false,
+   "invoice_price_exceeds_contract": null,
+   "performance_proof_received": true,
+   "pod_shows_shortage": true,
+   "promo_agreement_on_file": false,
+   "supplier_fault_confirmed": true
+  },
+  "flags": [],
+  "truth": {
+   "category": "pricing_discrepancy",
+   "outcome": "invalid",
+   "info_missing": true
+  }
+ },
+ {
+  "id": "O2C-007",
+  "amount": 2645.09,
+  "text": "Spoiled product received on INV-66429, deduction for damage. Trade allowance for feature ad week 14 taken against INV-66429.",
+  "attributes": {
+   "claim_within_window": false,
+   "damage_evidence_received": false,
+   "invoice_price_exceeds_contract": true,
+   "performance_proof_received": true,
+   "pod_shows_shortage": true,
+   "promo_agreement_on_file": true,
+   "supplier_fault_confirmed": false
+  },
+  "flags": [],
+  "truth": {
+   "category": "promotion_allowance",
+   "outcome": "valid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "O2C-008",
+  "amount": 4411.48,
+  "text": "Short shipment against INV-80069, deducting the missing quantity.",
+  "attributes": {
+   "claim_within_window": true,
+   "damage_evidence_received": true,
+   "invoice_price_exceeds_contract": false,
+   "performance_proof_received": false,
+   "pod_shows_shortage": false,
+   "promo_agreement_on_file": false,
+   "supplier_fault_confirmed": true
+  },
+  "flags": [],
+  "truth": {
+   "category": "shortage",
+   "outcome": "invalid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "O2C-009",
+  "amount": 1464.67,
+  "text": "INV-34983: 12 units arrived crushed and leaking, deducting damaged goods.",
+  "attributes": {
+   "claim_within_window": true,
+   "damage_evidence_received": null,
+   "invoice_price_exceeds_contract": false,
+   "performance_proof_received": true,
+   "pod_shows_shortage": true,
+   "promo_agreement_on_file": true,
+   "supplier_fault_confirmed": false
+  },
+  "flags": [],
+  "truth": {
+   "category": "damaged_goods",
+   "outcome": "valid",
+   "info_missing": true
+  }
+ },
+ {
+  "id": "O2C-010",
+  "amount": 1578.73,
+  "text": "Chargeback for late delivery outside appointment window, INV-55533.",
+  "attributes": {
+   "claim_within_window": true,
+   "damage_evidence_received": false,
+   "invoice_price_exceeds_contract": false,
+   "performance_proof_received": true,
+   "pod_shows_shortage": true,
+   "promo_agreement_on_file": true,
+   "supplier_fault_confirmed": true
+  },
+  "flags": [
+   "legal_hold"
+  ],
+  "truth": {
+   "category": "compliance_chargeback",
+   "outcome": "valid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "O2C-011",
+  "amount": 4598.87,
+  "text": "Short-paid invoice INV-29215: unit cost billed above the rate agreed in our contract.",
+  "attributes": {
+   "claim_within_window": false,
+   "damage_evidence_received": true,
+   "invoice_price_exceeds_contract": true,
+   "performance_proof_received": true,
+   "pod_shows_shortage": false,
+   "promo_agreement_on_file": true,
+   "supplier_fault_confirmed": false
+  },
+  "flags": [],
+  "truth": {
+   "category": "pricing_discrepancy",
+   "outcome": "valid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "O2C-012",
+  "amount": 15037.57,
+  "text": "Received less than invoiced on INV-90377, 4 missing cases. Trade allowance for feature ad week 14 taken against INV-90377.",
+  "attributes": {
+   "claim_within_window": false,
+   "damage_evidence_received": true,
+   "invoice_price_exceeds_contract": true,
+   "performance_proof_received": true,
+   "pod_shows_shortage": true,
+   "promo_agreement_on_file": true,
+   "supplier_fault_confirmed": true
+  },
+  "flags": [],
+  "truth": {
+   "category": "promotion_allowance",
+   "outcome": "valid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "O2C-013",
+  "amount": 5841.73,
+  "text": "Short pay on INV-55812, reason to follow.",
+  "attributes": {
+   "claim_within_window": true,
+   "damage_evidence_received": true,
+   "invoice_price_exceeds_contract": true,
+   "performance_proof_received": true,
+   "pod_shows_shortage": true,
+   "promo_agreement_on_file": false,
+   "supplier_fault_confirmed": false
+  },
+  "flags": [],
+  "truth": {
+   "category": "shortage",
+   "outcome": "valid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "O2C-014",
+  "amount": 1654.53,
+  "text": "Deduction taken on INV-25716, see remittance.",
+  "attributes": {
+   "claim_within_window": true,
+   "damage_evidence_received": true,
+   "invoice_price_exceeds_contract": false,
+   "performance_proof_received": true,
+   "pod_shows_shortage": false,
+   "promo_agreement_on_file": false,
+   "supplier_fault_confirmed": true
+  },
+  "flags": [],
+  "truth": {
+   "category": "damaged_goods",
+   "outcome": "valid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "O2C-015",
+  "amount": 8412.58,
+  "text": "Chargeback for late delivery outside appointment window, INV-29811.",
+  "attributes": {
+   "claim_within_window": false,
+   "damage_evidence_received": true,
+   "invoice_price_exceeds_contract": false,
+   "performance_proof_received": false,
+   "pod_shows_shortage": false,
+   "promo_agreement_on_file": true,
+   "supplier_fault_confirmed": null
+  },
+  "flags": [],
+  "truth": {
+   "category": "compliance_chargeback",
+   "outcome": "valid",
+   "info_missing": true
+  }
+ },
+ {
+  "id": "O2C-016",
+  "amount": 4723.33,
+  "text": "Received less than invoiced on INV-35533, 4 missing cases. Deducting the cost difference on INV-35533, you overcharged versus contract pricing.",
+  "attributes": {
+   "claim_within_window": true,
+   "damage_evidence_received": true,
+   "invoice_price_exceeds_contract": false,
+   "performance_proof_received": true,
+   "pod_shows_shortage": true,
+   "promo_agreement_on_file": false,
+   "supplier_fault_confirmed": true
+  },
+  "flags": [],
+  "truth": {
+   "category": "pricing_discrepancy",
+   "outcome": "invalid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "O2C-017",
+  "amount": 3034.94,
+  "text": "Deduction on INV-75752 for the spring promotion display allowance.",
+  "attributes": {
+   "claim_within_window": true,
+   "damage_evidence_received": true,
+   "invoice_price_exceeds_contract": true,
+   "performance_proof_received": true,
+   "pod_shows_shortage": true,
+   "promo_agreement_on_file": true,
+   "supplier_fault_confirmed": true
+  },
+  "flags": [],
+  "truth": {
+   "category": "promotion_allowance",
+   "outcome": "valid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "O2C-018",
+  "amount": 4624.15,
+  "text": "Received less than invoiced on INV-82802, 4 missing cases.",
+  "attributes": {
+   "claim_within_window": false,
+   "damage_evidence_received": true,
+   "invoice_price_exceeds_contract": true,
+   "performance_proof_received": true,
+   "pod_shows_shortage": false,
+   "promo_agreement_on_file": true,
+   "supplier_fault_confirmed": true
+  },
+  "flags": [],
+  "truth": {
+   "category": "shortage",
+   "outcome": "invalid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "O2C-019",
+  "amount": 1226.35,
+  "text": "Spoiled product received on INV-46331, deduction for damage.",
+  "attributes": {
+   "claim_within_window": true,
+   "damage_evidence_received": false,
+   "invoice_price_exceeds_contract": true,
+   "performance_proof_received": true,
+   "pod_shows_shortage": false,
+   "promo_agreement_on_file": false,
+   "supplier_fault_confirmed": false
+  },
+  "flags": [],
+  "truth": {
+   "category": "damaged_goods",
+   "outcome": "invalid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "O2C-020",
+  "amount": 11964.44,
+  "text": "Chargeback for late delivery outside appointment window, INV-19508.",
+  "attributes": {
+   "claim_within_window": true,
+   "damage_evidence_received": false,
+   "invoice_price_exceeds_contract": false,
+   "performance_proof_received": false,
+   "pod_shows_shortage": true,
+   "promo_agreement_on_file": false,
+   "supplier_fault_confirmed": true
+  },
+  "flags": [],
+  "truth": {
+   "category": "compliance_chargeback",
+   "outcome": "valid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "O2C-021",
+  "amount": 310.03,
+  "text": "Short shipment against INV-62200, deducting the missing quantity. Short-paid invoice INV-62200: unit cost billed above the rate agreed in our contract.",
+  "attributes": {
+   "claim_within_window": true,
+   "damage_evidence_received": true,
+   "invoice_price_exceeds_contract": true,
+   "performance_proof_received": true,
+   "pod_shows_shortage": true,
+   "promo_agreement_on_file": true,
+   "supplier_fault_confirmed": false
+  },
+  "flags": [],
+  "truth": {
+   "category": "pricing_discrepancy",
+   "outcome": "valid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "O2C-022",
+  "amount": 7668.85,
+  "text": "Deduction on INV-91779 for the spring promotion display allowance.",
+  "attributes": {
+   "claim_within_window": true,
+   "damage_evidence_received": false,
+   "invoice_price_exceeds_contract": true,
+   "performance_proof_received": true,
+   "pod_shows_shortage": true,
+   "promo_agreement_on_file": true,
+   "supplier_fault_confirmed": false
+  },
+  "flags": [],
+  "truth": {
+   "category": "promotion_allowance",
+   "outcome": "valid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "O2C-023",
+  "amount": 7244.41,
+  "text": "Short shipment against INV-43896, deducting the missing quantity.",
+  "attributes": {
+   "claim_within_window": false,
+   "damage_evidence_received": true,
+   "invoice_price_exceeds_contract": false,
+   "performance_proof_received": true,
+   "pod_shows_shortage": true,
+   "promo_agreement_on_file": false,
+   "supplier_fault_confirmed": true
+  },
+  "flags": [],
+  "truth": {
+   "category": "shortage",
+   "outcome": "valid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "O2C-024",
+  "amount": 595.86,
+  "text": "INV-39151: 12 units arrived crushed and leaking, deducting damaged goods.",
+  "attributes": {
+   "claim_within_window": true,
+   "damage_evidence_received": true,
+   "invoice_price_exceeds_contract": true,
+   "performance_proof_received": false,
+   "pod_shows_shortage": true,
+   "promo_agreement_on_file": true,
+   "supplier_fault_confirmed": true
+  },
+  "flags": [],
+  "truth": {
+   "category": "damaged_goods",
+   "outcome": "valid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "O2C-025",
+  "amount": 1826.69,
+  "text": "Labeling violation per routing guide on INV-50893, chargeback applied.",
+  "attributes": {
+   "claim_within_window": false,
+   "damage_evidence_received": true,
+   "invoice_price_exceeds_contract": true,
+   "performance_proof_received": true,
+   "pod_shows_shortage": true,
+   "promo_agreement_on_file": true,
+   "supplier_fault_confirmed": true
+  },
+  "flags": [],
+  "truth": {
+   "category": "compliance_chargeback",
+   "outcome": "valid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "O2C-026",
+  "amount": 5778.4,
+  "text": "Pricing on INV-68596 does not match the price list we signed, deduction taken.",
+  "attributes": {
+   "claim_within_window": true,
+   "damage_evidence_received": true,
+   "invoice_price_exceeds_contract": true,
+   "performance_proof_received": true,
+   "pod_shows_shortage": true,
+   "promo_agreement_on_file": false,
+   "supplier_fault_confirmed": false
+  },
+  "flags": [],
+  "truth": {
+   "category": "pricing_discrepancy",
+   "outcome": "valid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "O2C-027",
+  "amount": 6280.27,
+  "text": "Deduction taken on INV-55554, see remittance.",
+  "attributes": {
+   "claim_within_window": true,
+   "damage_evidence_received": false,
+   "invoice_price_exceeds_contract": false,
+   "performance_proof_received": true,
+   "pod_shows_shortage": true,
+   "promo_agreement_on_file": true,
+   "supplier_fault_confirmed": true
+  },
+  "flags": [
+   "key_account"
+  ],
+  "truth": {
+   "category": "promotion_allowance",
+   "outcome": "valid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "O2C-028",
+  "amount": 2618.52,
+  "text": "Received less than invoiced on INV-30648, 4 missing cases.",
+  "attributes": {
+   "claim_within_window": true,
+   "damage_evidence_received": false,
+   "invoice_price_exceeds_contract": false,
+   "performance_proof_received": true,
+   "pod_shows_shortage": null,
+   "promo_agreement_on_file": false,
+   "supplier_fault_confirmed": true
+  },
+  "flags": [],
+  "truth": {
+   "category": "shortage",
+   "outcome": "valid",
+   "info_missing": true
+  }
+ },
+ {
+  "id": "O2C-029",
+  "amount": 11095.9,
+  "text": "INV-42529: 12 units arrived crushed and leaking, deducting damaged goods.",
+  "attributes": {
+   "claim_within_window": true,
+   "damage_evidence_received": true,
+   "invoice_price_exceeds_contract": true,
+   "performance_proof_received": true,
+   "pod_shows_shortage": true,
+   "promo_agreement_on_file": true,
+   "supplier_fault_confirmed": false
+  },
+  "flags": [],
+  "truth": {
+   "category": "damaged_goods",
+   "outcome": "valid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "O2C-030",
+  "amount": 4624.04,
+  "text": "Chargeback for late delivery outside appointment window, INV-88192.",
+  "attributes": {
+   "claim_within_window": false,
+   "damage_evidence_received": true,
+   "invoice_price_exceeds_contract": true,
+   "performance_proof_received": false,
+   "pod_shows_shortage": true,
+   "promo_agreement_on_file": false,
+   "supplier_fault_confirmed": true
+  },
+  "flags": [],
+  "truth": {
+   "category": "compliance_chargeback",
+   "outcome": "valid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "O2C-031",
+  "amount": 7547.02,
+  "text": "Short-paid invoice INV-76108: unit cost billed above the rate agreed in our contract.",
+  "attributes": {
+   "claim_within_window": false,
+   "damage_evidence_received": true,
+   "invoice_price_exceeds_contract": true,
+   "performance_proof_received": false,
+   "pod_shows_shortage": false,
+   "promo_agreement_on_file": true,
+   "supplier_fault_confirmed": true
+  },
+  "flags": [],
+  "truth": {
+   "category": "pricing_discrepancy",
+   "outcome": "valid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "O2C-032",
+  "amount": 7311.59,
+  "text": "Scan-back promo funds deducted from INV-92282 as agreed with your rep.",
+  "attributes": {
+   "claim_within_window": false,
+   "damage_evidence_received": true,
+   "invoice_price_exceeds_contract": true,
+   "performance_proof_received": true,
+   "pod_shows_shortage": false,
+   "promo_agreement_on_file": false,
+   "supplier_fault_confirmed": true
+  },
+  "flags": [],
+  "truth": {
+   "category": "promotion_allowance",
+   "outcome": "invalid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "O2C-033",
+  "amount": 5457.39,
+  "text": "Received less than invoiced on INV-40773, 4 missing cases.",
+  "attributes": {
+   "claim_within_window": true,
+   "damage_evidence_received": false,
+   "invoice_price_exceeds_contract": true,
+   "performance_proof_received": false,
+   "pod_shows_shortage": true,
+   "promo_agreement_on_file": false,
+   "supplier_fault_confirmed": true
+  },
+  "flags": [],
+  "truth": {
+   "category": "shortage",
+   "outcome": "valid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "O2C-034",
+  "amount": 4273.19,
+  "text": "Damaged pallet on INV-95397, broken cartons, photos attached.",
+  "attributes": {
+   "claim_within_window": true,
+   "damage_evidence_received": true,
+   "invoice_price_exceeds_contract": true,
+   "performance_proof_received": true,
+   "pod_shows_shortage": false,
+   "promo_agreement_on_file": true,
+   "supplier_fault_confirmed": true
+  },
+  "flags": [],
+  "truth": {
+   "category": "damaged_goods",
+   "outcome": "valid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "O2C-035",
+  "amount": 5296.03,
+  "text": "Compliance fine on INV-81968: ASN sent after the truck arrived.",
+  "attributes": {
+   "claim_within_window": false,
+   "damage_evidence_received": true,
+   "invoice_price_exceeds_contract": true,
+   "performance_proof_received": false,
+   "pod_shows_shortage": false,
+   "promo_agreement_on_file": true,
+   "supplier_fault_confirmed": true
+  },
+  "flags": [],
+  "truth": {
+   "category": "compliance_chargeback",
+   "outcome": "valid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "O2C-036",
+  "amount": 18201.44,
+  "text": "Deducting the cost difference on INV-78690, you overcharged versus contract pricing.",
+  "attributes": {
+   "claim_within_window": true,
+   "damage_evidence_received": false,
+   "invoice_price_exceeds_contract": null,
+   "performance_proof_received": false,
+   "pod_shows_shortage": false,
+   "promo_agreement_on_file": true,
+   "supplier_fault_confirmed": false
+  },
+  "flags": [],
+  "truth": {
+   "category": "pricing_discrepancy",
+   "outcome": "valid",
+   "info_missing": true
+  }
+ },
+ {
+  "id": "O2C-037",
+  "amount": 3602.93,
+  "text": "Trade allowance for feature ad week 14 taken against INV-28442.",
+  "attributes": {
+   "claim_within_window": true,
+   "damage_evidence_received": false,
+   "invoice_price_exceeds_contract": true,
+   "performance_proof_received": false,
+   "pod_shows_shortage": false,
+   "promo_agreement_on_file": true,
+   "supplier_fault_confirmed": false
+  },
+  "flags": [],
+  "truth": {
+   "category": "promotion_allowance",
+   "outcome": "invalid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "O2C-038",
+  "amount": 3454.14,
+  "text": "Shortage on delivery for INV-20013, fewer units than the packing list.",
+  "attributes": {
+   "claim_within_window": false,
+   "damage_evidence_received": false,
+   "invoice_price_exceeds_contract": true,
+   "performance_proof_received": true,
+   "pod_shows_shortage": false,
+   "promo_agreement_on_file": false,
+   "supplier_fault_confirmed": true
+  },
+  "flags": [],
+  "truth": {
+   "category": "shortage",
+   "outcome": "invalid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "O2C-039",
+  "amount": 1661.25,
+  "text": "Labeling violation per routing guide on INV-13802, chargeback applied. Spoiled product received on INV-13802, deduction for damage.",
+  "attributes": {
+   "claim_within_window": true,
+   "damage_evidence_received": true,
+   "invoice_price_exceeds_contract": false,
+   "performance_proof_received": true,
+   "pod_shows_shortage": false,
+   "promo_agreement_on_file": true,
+   "supplier_fault_confirmed": false
+  },
+  "flags": [],
+  "truth": {
+   "category": "damaged_goods",
+   "outcome": "valid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "O2C-040",
+  "amount": 15710.52,
+  "text": "Labeling violation per routing guide on INV-46929, chargeback applied.",
+  "attributes": {
+   "claim_within_window": false,
+   "damage_evidence_received": false,
+   "invoice_price_exceeds_contract": true,
+   "performance_proof_received": true,
+   "pod_shows_shortage": true,
+   "promo_agreement_on_file": false,
+   "supplier_fault_confirmed": false
+  },
+  "flags": [],
+  "truth": {
+   "category": "compliance_chargeback",
+   "outcome": "invalid",
+   "info_missing": false
+  }
+ }
+]

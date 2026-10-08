@@ -1,0 +1,62 @@
+[
+  {
+    "id": "BFS-PTP-01",
+    "category": "promise_to_pay",
+    "title": "Promise to pay limits",
+    "text": "A promise to pay may be booked if the borrower has fewer than two broken promises in 90 days and the promised date is within 15 days."
+  },
+  {
+    "id": "BFS-PTP-02",
+    "category": "promise_to_pay",
+    "title": "Contact pause",
+    "text": "Outbound contact is paused until the promised date once a valid promise to pay is booked."
+  },
+  {
+    "id": "BFS-PAY-01",
+    "category": "already_paid",
+    "title": "Ledger reconciliation",
+    "text": "Where the borrower reports a payment, the ledger and payment gateway records are checked before any further collection contact."
+  },
+  {
+    "id": "BFS-PAY-02",
+    "category": "already_paid",
+    "title": "Payment proof",
+    "text": "If no payment is found, the borrower is asked for the transaction reference or receipt and standard cadence continues."
+  },
+  {
+    "id": "BFS-CHG-01",
+    "category": "charge_dispute",
+    "title": "Schedule of charges",
+    "text": "Late fees, penalties and bounce charges are applied only as per the published schedule of charges."
+  },
+  {
+    "id": "BFS-CHG-02",
+    "category": "charge_dispute",
+    "title": "Charge reversal",
+    "text": "Charges applied in error are reversed and the corrected statement is shared with the borrower."
+  },
+  {
+    "id": "BFS-HRD-01",
+    "category": "hardship",
+    "title": "Hardship handling",
+    "text": "Borrowers reporting financial hardship, job loss or medical emergency are referred to a trained officer for restructuring assessment and contact is paused."
+  },
+  {
+    "id": "BFS-HRD-02",
+    "category": "hardship",
+    "title": "Fair practice",
+    "text": "Collection contact follows fair practice norms: no harassment, restricted hours, and respectful language, with extra care for vulnerable customers."
+  },
+  {
+    "id": "BFS-WRP-01",
+    "category": "wrong_party",
+    "title": "Third-party contact",
+    "text": "Loan details are never disclosed to a third party. Wrong-party contacts are logged and the number is removed from outreach."
+  },
+  {
+    "id": "BFS-WRP-02",
+    "category": "wrong_party",
+    "title": "Identity verification",
+    "text": "Where identity is unclear, verification happens only through the registered channel before any disclosure."
+  }
+]

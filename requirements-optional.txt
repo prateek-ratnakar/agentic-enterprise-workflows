@@ -1,0 +1,2 @@
+# Only needed for --llm mode. The engine itself uses the standard library.
+anthropic

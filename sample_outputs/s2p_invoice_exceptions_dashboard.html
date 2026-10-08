@@ -1,0 +1,89 @@
+<!DOCTYPE html><html lang='en'><head><meta charset='utf-8'><title>Source to Pay - Invoice Exception Handling</title><style>
+body{font-family:Georgia,'Source Serif 4',serif;background:#FBFBF9;color:#131C2B;margin:0;padding:32px;line-height:1.5}
+h1{font-family:Arial,sans-serif;font-size:22px;margin:0 0 4px}
+h2{font-family:Arial,sans-serif;font-size:15px;margin:28px 0 8px;border-bottom:2px solid #131C2B;padding-bottom:4px}
+.sub{color:#5A6472;font-size:14px;max-width:880px}
+.note{background:#FFF7E8;border-left:3px solid #B4690E;padding:8px 12px;font-size:13px;margin:12px 0;max-width:880px}
+.tiles{display:flex;flex-wrap:wrap;max-width:1000px}
+.tile{border:1px solid #E4E2DA;background:#fff;padding:12px;width:205px;margin:0 10px 10px 0}
+.tile b{display:block;font-family:Arial,sans-serif;font-size:22px;color:#1E5E46}
+.tile span{font-size:12.5px;color:#5A6472}
+table{border-collapse:collapse;font-size:12.5px;width:100%;max-width:1180px;background:#fff}
+th,td{border:1px solid #E4E2DA;padding:5px 7px;text-align:left;vertical-align:top}
+th{background:#F1F0EA;font-family:Arial,sans-serif}
+.bar{height:10px;background:#1E5E46;display:inline-block}
+.bad{color:#9B2C2C;font-weight:bold}.ok{color:#1E5E46}
+</style></head><body>
+<h1>Source to Pay - Invoice Exception Handling</h1>
+<p class='sub'>Cross-industry (Manufacturing, High-Tech, Retail) | Source to Pay | Accounts payable &gt; Three-way match &gt; Exception resolution</p>
+<p class='sub'>A supplier invoice fails the three-way match against purchase order and goods receipt. The workflow decides whether to release payment, hold it, or send the exception to the buyer or budget owner.</p>
+<div class='note'>Synthetic data. 40 generated cases; the human reviewer is simulated from ground truth the way a UAT reference set would be. Value figures use the labelled assumptions below, not client data.</div>
+<h2>Outcome</h2><div class='tiles'>
+<div class='tile'><b>40.0%</b><span>straight-through (auto-resolved)</span></div>
+<div class='tile'><b>50.0%</b><span>routed to a person by guardrails</span></div>
+<div class='tile'><b>10.0%</b><span>held for missing evidence</span></div>
+<div class='tile'><b>100.0%</b><span>auto-decision accuracy vs human reference</span></div>
+<div class='tile'><b>86.7%</b><span>agent recommendation matched reviewer</span></div>
+<div class='tile'><b>25 to 5.6 min</b><span>handling effort per case</span></div>
+<div class='tile'><b>9 to 2.2 days</b><span>time to resolve</span></div>
+<div class='tile'><b>73 tokens</b><span>grounded context per call (vs 243 full corpus)</span></div>
+</div>
+<h2>Why cases went to a person</h2><table><tr><th>Guardrail trigger</th><th>Cases</th><th></th></tr>
+<tr><td>Human-only category</td><td>8</td><td><span class='bar' style='width:96px'></span></td></tr>
+<tr><td>Above auto-decision limit</td><td>8</td><td><span class='bar' style='width:96px'></span></td></tr>
+<tr><td>Unclassified</td><td>4</td><td><span class='bar' style='width:48px'></span></td></tr>
+<tr><td>Low confidence</td><td>1</td><td><span class='bar' style='width:12px'></span></td></tr>
+<tr><td>Account flag</td><td>1</td><td><span class='bar' style='width:12px'></span></td></tr>
+</table>
+<h2>Value case (annualized on assumptions)</h2>
+<div class='note'>ASSUMPTIONS for illustration. Replace with the client&#x27;s measured baseline before building a business case.</div>
+<table><tr><th>Measure</th><th>Baseline (manual)</th><th>Agentic design</th></tr>
+<tr><td>Effort per case (minutes)</td><td>25</td><td>5.6</td></tr>
+<tr><td>Days to resolve</td><td>9</td><td>2.2</td></tr>
+<tr><td>Annual volume (assumed)</td><td colspan='2'>90,000 cases</td></tr>
+<tr><td>Annual effort released</td><td colspan='2'>29,100 hours</td></tr>
+<tr><td>Annual cost released at USD 20/hour</td><td colspan='2'>USD 582,000</td></tr>
+<tr><td>Invoice value held or rejected before payment (sample)</td><td colspan='2'>USD 104,494.85</td></tr>
+</table>
+<h2>Case audit trail</h2><table><tr><th>Case</th><th>Amount</th><th>Text</th><th>Intake</th><th>Route</th><th>Action</th><th>Cited clauses</th><th>Guardrail reasons</th><th>Check</th></tr>
+<tr><td>S2P-001</td><td>4,559.74</td><td>Invoice INV-52445 blocked in workflow.</td><td>unclassified</td><td>human</td><td>Release for payment: variance within tolerance</td><td>-</td><td>unclassified: no category signal</td><td>no proposal</td></tr>
+<tr><td>S2P-002</td><td>2,853.31</td><td>Invoice INV-17747 unit price higher than PO, price variance flagged. Qty billed on INV-17747 exceeds goods receipt.</td><td>price_variance (0.50)</td><td>human</td><td>Release for payment: goods receipt matches invoice</td><td>S2P-PV-01, S2P-PV-02</td><td>low confidence 0.50 &lt; 0.60</td><td>reviewer overrode</td></tr>
+<tr><td>S2P-003</td><td>9,711.45</td><td>Missing PO on INV-50433, no purchase order in system.</td><td>missing_po (1.00)</td><td>human</td><td>Release after retrospective PO approval</td><td>S2P-PO-01, S2P-PO-02</td><td>human-only category: missing_po</td><td>no proposal</td></tr>
+<tr><td>S2P-004</td><td>8,244.37</td><td>Supplier resubmitted INV-71027, copy of invoice already invoiced?</td><td>duplicate_invoice (1.00)</td><td>auto</td><td>Release: duplicate check clear, distinct invoice</td><td>S2P-DU-02, S2P-DU-01</td><td>-</td><td><span class='ok'>correct</span></td></tr>
+<tr><td>S2P-005</td><td>14,784.85</td><td>Tax code HSN mismatch on invoice INV-19594.</td><td>tax_mismatch (1.00)</td><td>auto</td><td>Release: tax code matches vendor and item master</td><td>S2P-TX-02, S2P-TX-01</td><td>-</td><td><span class='ok'>correct</span></td></tr>
+<tr><td>S2P-006</td><td>10,529.65</td><td>Supplier priced higher than PO on INV-55898.</td><td>price_variance (1.00)</td><td>auto</td><td>Release for payment: variance within tolerance</td><td>S2P-PV-01, S2P-PV-02</td><td>-</td><td><span class='ok'>correct</span></td></tr>
+<tr><td>S2P-007</td><td>13,369.03</td><td>Goods receipt shows fewer units received than invoice INV-68411.</td><td>quantity_variance (1.00)</td><td>auto</td><td>Release for payment: goods receipt matches invoice</td><td>S2P-QV-01, S2P-QV-02</td><td>-</td><td><span class='ok'>correct</span></td></tr>
+<tr><td>S2P-008</td><td>4,384.30</td><td>Service invoice INV-75078 raised without purchase order.</td><td>missing_po (1.00)</td><td>human</td><td>Reject under no-PO-no-pay and notify budget owner</td><td>S2P-PO-01, S2P-PO-02</td><td>human-only category: missing_po</td><td>agent agreed</td></tr>
+<tr><td>S2P-009</td><td>2,521.20</td><td>Possible duplicate: INV-29830 looks like the same invoice paid last month.</td><td>duplicate_invoice (1.00)</td><td>auto</td><td>Release: duplicate check clear, distinct invoice</td><td>S2P-DU-02, S2P-DU-01</td><td>-</td><td><span class='ok'>correct</span></td></tr>
+<tr><td>S2P-010</td><td>11,526.93</td><td>VAT on INV-90949 does not match vendor master tax rate.</td><td>tax_mismatch (1.00)</td><td>human</td><td>Release: tax code matches vendor and item master</td><td>S2P-TX-01, S2P-TX-02</td><td>account flag: new_supplier_first_invoice</td><td>agent agreed</td></tr>
+<tr><td>S2P-011</td><td>2,929.34</td><td>Invoice INV-37363 unit price higher than PO, price variance flagged.</td><td>price_variance (1.00)</td><td>pending_info</td><td>Request missing evidence: variance_within_tolerance</td><td>S2P-PV-01, S2P-PV-02</td><td>-</td><td>held</td></tr>
+<tr><td>S2P-012</td><td>4,986.20</td><td>Goods receipt shows fewer units received than invoice INV-55533.</td><td>quantity_variance (1.00)</td><td>auto</td><td>Release for payment: goods receipt matches invoice</td><td>S2P-QV-01, S2P-QV-02</td><td>-</td><td><span class='ok'>correct</span></td></tr>
+<tr><td>S2P-013</td><td>36,797.31</td><td>Invoice INV-31160 received with no PO reference, PO not found.</td><td>missing_po (1.00)</td><td>human</td><td>Release after retrospective PO approval</td><td>S2P-PO-01, S2P-PO-02</td><td>human-only category: missing_po; amount 36797.31 above auto limit 15000</td><td>agent agreed</td></tr>
+<tr><td>S2P-014</td><td>13,395.75</td><td>Invoice INV-58064 blocked in workflow.</td><td>unclassified</td><td>human</td><td>Reject as duplicate and notify supplier</td><td>-</td><td>unclassified: no category signal</td><td>no proposal</td></tr>
+<tr><td>S2P-015</td><td>6,486.50</td><td>VAT on INV-77847 does not match vendor master tax rate.</td><td>tax_mismatch (1.00)</td><td>auto</td><td>Hold: request corrected tax invoice</td><td>S2P-TX-01, S2P-TX-02</td><td>-</td><td><span class='ok'>correct</span></td></tr>
+<tr><td>S2P-016</td><td>11,683.46</td><td>Invoice INV-20556 unit price higher than PO, price variance flagged.</td><td>price_variance (1.00)</td><td>auto</td><td>Release for payment: variance within tolerance</td><td>S2P-PV-01, S2P-PV-02</td><td>-</td><td><span class='ok'>correct</span></td></tr>
+<tr><td>S2P-017</td><td>1,803.07</td><td>Match exception on INV-25716, please review.</td><td>unclassified</td><td>human</td><td>Hold: pay received quantity only, request debit note</td><td>-</td><td>unclassified: no category signal</td><td>no proposal</td></tr>
+<tr><td>S2P-018</td><td>678.72</td><td>Missing PO on INV-26651, no purchase order in system.</td><td>missing_po (1.00)</td><td>human</td><td>Reject under no-PO-no-pay and notify budget owner</td><td>S2P-PO-01, S2P-PO-02</td><td>human-only category: missing_po</td><td>agent agreed</td></tr>
+<tr><td>S2P-019</td><td>10,679.94</td><td>Duplicate flag on INV-95154.</td><td>duplicate_invoice (1.00)</td><td>auto</td><td>Release: duplicate check clear, distinct invoice</td><td>S2P-DU-02, S2P-DU-01</td><td>-</td><td><span class='ok'>correct</span></td></tr>
+<tr><td>S2P-020</td><td>631.08</td><td>Supplier priced higher than PO on INV-64920. Tax code HSN mismatch on invoice INV-64920.</td><td>tax_mismatch (0.67)</td><td>auto</td><td>Hold: request corrected tax invoice</td><td>S2P-TX-02, S2P-TX-01</td><td>-</td><td><span class='ok'>correct</span></td></tr>
+<tr><td>S2P-021</td><td>2,178.14</td><td>Invoice INV-34000 unit price higher than PO, price variance flagged.</td><td>price_variance (1.00)</td><td>auto</td><td>Release for payment: variance within tolerance</td><td>S2P-PV-01, S2P-PV-02</td><td>-</td><td><span class='ok'>correct</span></td></tr>
+<tr><td>S2P-022</td><td>9,365.26</td><td>Invoice INV-42570 quantity does not match GRN, partial delivery.</td><td>quantity_variance (1.00)</td><td>auto</td><td>Release for payment: goods receipt matches invoice</td><td>S2P-QV-02, S2P-QV-01</td><td>-</td><td><span class='ok'>correct</span></td></tr>
+<tr><td>S2P-023</td><td>2,452.71</td><td>Service invoice INV-69289 raised without purchase order.</td><td>missing_po (1.00)</td><td>human</td><td>Reject under no-PO-no-pay and notify budget owner</td><td>S2P-PO-01, S2P-PO-02</td><td>human-only category: missing_po</td><td>agent agreed</td></tr>
+<tr><td>S2P-024</td><td>44,123.71</td><td>Supplier resubmitted INV-19508, copy of invoice already invoiced?</td><td>duplicate_invoice (1.00)</td><td>human</td><td>Reject as duplicate and notify supplier</td><td>S2P-DU-02, S2P-DU-01</td><td>amount 44123.71 above auto limit 15000</td><td>agent agreed</td></tr>
+<tr><td>S2P-025</td><td>1,931.83</td><td>Tax code HSN mismatch on invoice INV-22337.</td><td>tax_mismatch (1.00)</td><td>auto</td><td>Release: tax code matches vendor and item master</td><td>S2P-TX-02, S2P-TX-01</td><td>-</td><td><span class='ok'>correct</span></td></tr>
+<tr><td>S2P-026</td><td>15,812.14</td><td>Price mismatch between PO and invoice INV-54299, rate difference of 1.5 percent.</td><td>price_variance (1.00)</td><td>human</td><td>Release for payment: variance within tolerance</td><td>S2P-PV-01, S2P-PV-02</td><td>amount 15812.14 above auto limit 15000</td><td>agent agreed</td></tr>
+<tr><td>S2P-027</td><td>33,406.06</td><td>Invoice INV-45641 quantity does not match GRN, partial delivery.</td><td>quantity_variance (1.00)</td><td>human</td><td>Release for payment: goods receipt matches invoice</td><td>S2P-QV-02, S2P-QV-01</td><td>amount 33406.06 above auto limit 15000</td><td>agent agreed</td></tr>
+<tr><td>S2P-028</td><td>4,980.78</td><td>Missing PO on INV-21725, no purchase order in system.</td><td>missing_po (1.00)</td><td>human</td><td>Release after retrospective PO approval</td><td>S2P-PO-01, S2P-PO-02</td><td>human-only category: missing_po</td><td>agent agreed</td></tr>
+<tr><td>S2P-029</td><td>16,800.77</td><td>Duplicate flag on INV-11513.</td><td>duplicate_invoice (1.00)</td><td>human</td><td>Reject as duplicate and notify supplier</td><td>S2P-DU-02, S2P-DU-01</td><td>amount 16800.77 above auto limit 15000</td><td>agent agreed</td></tr>
+<tr><td>S2P-030</td><td>4,648.53</td><td>Tax code HSN mismatch on invoice INV-79610.</td><td>tax_mismatch (1.00)</td><td>pending_info</td><td>Request missing evidence: tax_code_matches_master</td><td>S2P-TX-02, S2P-TX-01</td><td>-</td><td>held</td></tr>
+<tr><td>S2P-031</td><td>37,678.79</td><td>VAT on INV-96287 does not match vendor master tax rate. Price mismatch between PO and invoice INV-96287, rate difference of 1.5 percent.</td><td>tax_mismatch (0.60)</td><td>human</td><td>Release for payment: variance within tolerance</td><td>S2P-TX-01, S2P-TX-02</td><td>amount 37678.79 above auto limit 15000</td><td>reviewer overrode</td></tr>
+<tr><td>S2P-032</td><td>5,290.22</td><td>Match exception on INV-55554, please review.</td><td>unclassified</td><td>human</td><td>Hold: pay received quantity only, request debit note</td><td>-</td><td>unclassified: no category signal</td><td>no proposal</td></tr>
+<tr><td>S2P-033</td><td>26,357.79</td><td>Invoice INV-48411 received with no PO reference, PO not found.</td><td>missing_po (1.00)</td><td>human</td><td>Release after retrospective PO approval</td><td>S2P-PO-01, S2P-PO-02</td><td>human-only category: missing_po; amount 26357.79 above auto limit 15000</td><td>agent agreed</td></tr>
+<tr><td>S2P-034</td><td>7,273.42</td><td>Possible duplicate: INV-10140 looks like the same invoice paid last month.</td><td>duplicate_invoice (1.00)</td><td>pending_info</td><td>Request missing evidence: duplicate_check_clear</td><td>S2P-DU-02, S2P-DU-01</td><td>-</td><td>held</td></tr>
+<tr><td>S2P-035</td><td>9,047.18</td><td>VAT on INV-92532 does not match vendor master tax rate.</td><td>tax_mismatch (1.00)</td><td>auto</td><td>Release: tax code matches vendor and item master</td><td>S2P-TX-01, S2P-TX-02</td><td>-</td><td><span class='ok'>correct</span></td></tr>
+<tr><td>S2P-036</td><td>10,362.09</td><td>Invoice INV-91095 unit price higher than PO, price variance flagged.</td><td>price_variance (1.00)</td><td>auto</td><td>Release for payment: variance within tolerance</td><td>S2P-PV-01, S2P-PV-02</td><td>-</td><td><span class='ok'>correct</span></td></tr>
+<tr><td>S2P-037</td><td>358.66</td><td>Invoice INV-12107 received with no PO reference, PO not found. Invoice INV-12107 quantity does not match GRN, partial delivery.</td><td>quantity_variance (0.60)</td><td>pending_info</td><td>Request missing evidence: grn_matches_invoice</td><td>S2P-QV-02, S2P-QV-01</td><td>-</td><td>held</td></tr>
+<tr><td>S2P-038</td><td>8,448.02</td><td>Supplier priced higher than PO on INV-75925. Missing PO on INV-75925, no purchase order in system.</td><td>missing_po (0.67)</td><td>human</td><td>Reject under no-PO-no-pay and notify budget owner</td><td>S2P-PO-01, S2P-PO-02</td><td>human-only category: missing_po</td><td>agent agreed</td></tr>
+<tr><td>S2P-039</td><td>11,294.37</td><td>Duplicate flag on INV-20058.</td><td>duplicate_invoice (1.00)</td><td>auto</td><td>Release: duplicate check clear, distinct invoice</td><td>S2P-DU-02, S2P-DU-01</td><td>-</td><td><span class='ok'>correct</span></td></tr>
+<tr><td>S2P-040</td><td>17,881.42</td><td>Tax code HSN mismatch on invoice INV-73231.</td><td>tax_mismatch (1.00)</td><td>human</td><td>Release: tax code matches vendor and item master</td><td>S2P-TX-02, S2P-TX-01</td><td>amount 17881.42 above auto limit 15000</td><td>agent agreed</td></tr>
+</table></body></html>

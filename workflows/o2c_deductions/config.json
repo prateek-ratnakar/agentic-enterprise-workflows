@@ -1,0 +1,123 @@
+{
+  "workflow_id": "o2c_deductions",
+  "display_name": "Order to Cash - Customer Deductions and Disputes",
+  "industry": "Consumer Goods and Retail",
+  "process_family": "Order to Cash",
+  "process_step": "Collections > Deduction management > Dispute resolution",
+  "currency": "USD",
+  "description": "A retailer short-pays an invoice and cites a reason. The workflow decides whether the deduction is valid (issue credit) or invalid (dispute and rebill), and routes judgment calls to an analyst.",
+  "categories": {
+    "pricing_discrepancy": {
+      "label": "Pricing discrepancy",
+      "keywords": [
+        "price",
+        "pricing",
+        "unit cost",
+        "overcharged",
+        "rate agreed",
+        "cost difference"
+      ],
+      "valid_if": [
+        "invoice_price_exceeds_contract"
+      ],
+      "on_valid": "Accept: issue credit memo for the price difference",
+      "on_invalid": "Dispute: rebill with contract price evidence",
+      "policy_query": "price discrepancy contract price invoice price credit memo"
+    },
+    "promotion_allowance": {
+      "label": "Promotion or trade allowance",
+      "keywords": [
+        "promo",
+        "promotion",
+        "trade allowance",
+        "display",
+        "feature ad",
+        "scan-back",
+        "co-op"
+      ],
+      "valid_if": [
+        "promo_agreement_on_file",
+        "performance_proof_received"
+      ],
+      "on_valid": "Accept: match to trade promotion accrual and close",
+      "on_invalid": "Dispute: request proof of performance or deny against agreement",
+      "policy_query": "promotion trade allowance agreement proof of performance accrual"
+    },
+    "shortage": {
+      "label": "Shortage",
+      "keywords": [
+        "short",
+        "shortage",
+        "missing cases",
+        "received less",
+        "fewer units"
+      ],
+      "valid_if": [
+        "pod_shows_shortage"
+      ],
+      "on_valid": "Accept: credit shortage confirmed on proof of delivery",
+      "on_invalid": "Dispute: signed proof of delivery shows full quantity",
+      "policy_query": "shortage proof of delivery signed quantity received"
+    },
+    "damaged_goods": {
+      "label": "Damaged goods",
+      "keywords": [
+        "damage",
+        "damaged",
+        "broken",
+        "crushed",
+        "spoiled",
+        "leaking"
+      ],
+      "valid_if": [
+        "damage_evidence_received",
+        "claim_within_window"
+      ],
+      "on_valid": "Accept: credit damage and file carrier claim",
+      "on_invalid": "Dispute: claim outside window or without evidence",
+      "policy_query": "damaged goods claim window photo evidence carrier"
+    },
+    "compliance_chargeback": {
+      "label": "Compliance chargeback",
+      "keywords": [
+        "asn",
+        "late delivery",
+        "labeling",
+        "label",
+        "routing guide",
+        "compliance fine",
+        "chargeback"
+      ],
+      "valid_if": [
+        "supplier_fault_confirmed"
+      ],
+      "on_valid": "Accept: chargeback valid under retailer routing guide",
+      "on_invalid": "Dispute: carrier or retailer caused the violation",
+      "policy_query": "compliance chargeback routing guide asn late delivery labeling fault"
+    }
+  },
+  "human_only_categories": [],
+  "human_review_flags": [
+    "key_account",
+    "legal_hold"
+  ],
+  "thresholds": {
+    "min_confidence": 0.6,
+    "min_grounding_score": 0.3,
+    "auto_max_amount": 7500
+  },
+  "value_model": {
+    "_note": "ASSUMPTIONS for illustration. Replace with the client's measured baseline before building a business case.",
+    "manual_minutes_per_case": 35,
+    "auto_minutes_per_case": 2,
+    "assisted_minutes_per_case": 12,
+    "pending_minutes_per_case": 6,
+    "manual_days_to_resolve": 24,
+    "auto_days_to_resolve": 1,
+    "assisted_days_to_resolve": 6,
+    "pending_days_to_resolve": 12,
+    "annual_volume": 60000,
+    "cost_per_hour": 22,
+    "invalid_amount_label": "Invalid deductions identified for recovery (sample)"
+  }
+}

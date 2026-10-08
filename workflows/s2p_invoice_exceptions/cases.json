@@ -1,0 +1,724 @@
+[
+ {
+  "id": "S2P-001",
+  "amount": 4559.74,
+  "text": "Invoice INV-52445 blocked in workflow.",
+  "attributes": {
+   "duplicate_check_clear": false,
+   "grn_matches_invoice": true,
+   "retro_po_approved": true,
+   "tax_code_matches_master": true,
+   "variance_within_tolerance": null
+  },
+  "flags": [],
+  "truth": {
+   "category": "price_variance",
+   "outcome": "valid",
+   "info_missing": true
+  }
+ },
+ {
+  "id": "S2P-002",
+  "amount": 2853.31,
+  "text": "Invoice INV-17747 unit price higher than PO, price variance flagged. Qty billed on INV-17747 exceeds goods receipt.",
+  "attributes": {
+   "duplicate_check_clear": false,
+   "grn_matches_invoice": true,
+   "retro_po_approved": true,
+   "tax_code_matches_master": true,
+   "variance_within_tolerance": false
+  },
+  "flags": [],
+  "truth": {
+   "category": "quantity_variance",
+   "outcome": "valid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "S2P-003",
+  "amount": 9711.45,
+  "text": "Missing PO on INV-50433, no purchase order in system.",
+  "attributes": {
+   "duplicate_check_clear": true,
+   "grn_matches_invoice": true,
+   "retro_po_approved": null,
+   "tax_code_matches_master": true,
+   "variance_within_tolerance": true
+  },
+  "flags": [],
+  "truth": {
+   "category": "missing_po",
+   "outcome": "valid",
+   "info_missing": true
+  }
+ },
+ {
+  "id": "S2P-004",
+  "amount": 8244.37,
+  "text": "Supplier resubmitted INV-71027, copy of invoice already invoiced?",
+  "attributes": {
+   "duplicate_check_clear": true,
+   "grn_matches_invoice": true,
+   "retro_po_approved": true,
+   "tax_code_matches_master": false,
+   "variance_within_tolerance": true
+  },
+  "flags": [],
+  "truth": {
+   "category": "duplicate_invoice",
+   "outcome": "valid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "S2P-005",
+  "amount": 14784.85,
+  "text": "Tax code HSN mismatch on invoice INV-19594.",
+  "attributes": {
+   "duplicate_check_clear": true,
+   "grn_matches_invoice": true,
+   "retro_po_approved": false,
+   "tax_code_matches_master": true,
+   "variance_within_tolerance": false
+  },
+  "flags": [],
+  "truth": {
+   "category": "tax_mismatch",
+   "outcome": "valid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "S2P-006",
+  "amount": 10529.65,
+  "text": "Supplier priced higher than PO on INV-55898.",
+  "attributes": {
+   "duplicate_check_clear": false,
+   "grn_matches_invoice": true,
+   "retro_po_approved": true,
+   "tax_code_matches_master": true,
+   "variance_within_tolerance": true
+  },
+  "flags": [],
+  "truth": {
+   "category": "price_variance",
+   "outcome": "valid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "S2P-007",
+  "amount": 13369.03,
+  "text": "Goods receipt shows fewer units received than invoice INV-68411.",
+  "attributes": {
+   "duplicate_check_clear": false,
+   "grn_matches_invoice": true,
+   "retro_po_approved": false,
+   "tax_code_matches_master": true,
+   "variance_within_tolerance": false
+  },
+  "flags": [],
+  "truth": {
+   "category": "quantity_variance",
+   "outcome": "valid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "S2P-008",
+  "amount": 4384.3,
+  "text": "Service invoice INV-75078 raised without purchase order.",
+  "attributes": {
+   "duplicate_check_clear": true,
+   "grn_matches_invoice": true,
+   "retro_po_approved": false,
+   "tax_code_matches_master": true,
+   "variance_within_tolerance": true
+  },
+  "flags": [],
+  "truth": {
+   "category": "missing_po",
+   "outcome": "invalid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "S2P-009",
+  "amount": 2521.2,
+  "text": "Possible duplicate: INV-29830 looks like the same invoice paid last month.",
+  "attributes": {
+   "duplicate_check_clear": true,
+   "grn_matches_invoice": false,
+   "retro_po_approved": true,
+   "tax_code_matches_master": true,
+   "variance_within_tolerance": true
+  },
+  "flags": [],
+  "truth": {
+   "category": "duplicate_invoice",
+   "outcome": "valid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "S2P-010",
+  "amount": 11526.93,
+  "text": "VAT on INV-90949 does not match vendor master tax rate.",
+  "attributes": {
+   "duplicate_check_clear": true,
+   "grn_matches_invoice": false,
+   "retro_po_approved": false,
+   "tax_code_matches_master": true,
+   "variance_within_tolerance": false
+  },
+  "flags": [
+   "new_supplier_first_invoice"
+  ],
+  "truth": {
+   "category": "tax_mismatch",
+   "outcome": "valid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "S2P-011",
+  "amount": 2929.34,
+  "text": "Invoice INV-37363 unit price higher than PO, price variance flagged.",
+  "attributes": {
+   "duplicate_check_clear": true,
+   "grn_matches_invoice": true,
+   "retro_po_approved": true,
+   "tax_code_matches_master": true,
+   "variance_within_tolerance": null
+  },
+  "flags": [],
+  "truth": {
+   "category": "price_variance",
+   "outcome": "valid",
+   "info_missing": true
+  }
+ },
+ {
+  "id": "S2P-012",
+  "amount": 4986.2,
+  "text": "Goods receipt shows fewer units received than invoice INV-55533.",
+  "attributes": {
+   "duplicate_check_clear": true,
+   "grn_matches_invoice": true,
+   "retro_po_approved": false,
+   "tax_code_matches_master": true,
+   "variance_within_tolerance": true
+  },
+  "flags": [],
+  "truth": {
+   "category": "quantity_variance",
+   "outcome": "valid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "S2P-013",
+  "amount": 36797.31,
+  "text": "Invoice INV-31160 received with no PO reference, PO not found.",
+  "attributes": {
+   "duplicate_check_clear": false,
+   "grn_matches_invoice": true,
+   "retro_po_approved": true,
+   "tax_code_matches_master": true,
+   "variance_within_tolerance": true
+  },
+  "flags": [],
+  "truth": {
+   "category": "missing_po",
+   "outcome": "valid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "S2P-014",
+  "amount": 13395.75,
+  "text": "Invoice INV-58064 blocked in workflow.",
+  "attributes": {
+   "duplicate_check_clear": false,
+   "grn_matches_invoice": true,
+   "retro_po_approved": false,
+   "tax_code_matches_master": true,
+   "variance_within_tolerance": true
+  },
+  "flags": [],
+  "truth": {
+   "category": "duplicate_invoice",
+   "outcome": "invalid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "S2P-015",
+  "amount": 6486.5,
+  "text": "VAT on INV-77847 does not match vendor master tax rate.",
+  "attributes": {
+   "duplicate_check_clear": true,
+   "grn_matches_invoice": true,
+   "retro_po_approved": true,
+   "tax_code_matches_master": false,
+   "variance_within_tolerance": false
+  },
+  "flags": [],
+  "truth": {
+   "category": "tax_mismatch",
+   "outcome": "invalid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "S2P-016",
+  "amount": 11683.46,
+  "text": "Invoice INV-20556 unit price higher than PO, price variance flagged.",
+  "attributes": {
+   "duplicate_check_clear": true,
+   "grn_matches_invoice": true,
+   "retro_po_approved": true,
+   "tax_code_matches_master": false,
+   "variance_within_tolerance": true
+  },
+  "flags": [],
+  "truth": {
+   "category": "price_variance",
+   "outcome": "valid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "S2P-017",
+  "amount": 1803.07,
+  "text": "Match exception on INV-25716, please review.",
+  "attributes": {
+   "duplicate_check_clear": true,
+   "grn_matches_invoice": false,
+   "retro_po_approved": false,
+   "tax_code_matches_master": true,
+   "variance_within_tolerance": false
+  },
+  "flags": [],
+  "truth": {
+   "category": "quantity_variance",
+   "outcome": "invalid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "S2P-018",
+  "amount": 678.72,
+  "text": "Missing PO on INV-26651, no purchase order in system.",
+  "attributes": {
+   "duplicate_check_clear": false,
+   "grn_matches_invoice": false,
+   "retro_po_approved": false,
+   "tax_code_matches_master": false,
+   "variance_within_tolerance": false
+  },
+  "flags": [],
+  "truth": {
+   "category": "missing_po",
+   "outcome": "invalid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "S2P-019",
+  "amount": 10679.94,
+  "text": "Duplicate flag on INV-95154.",
+  "attributes": {
+   "duplicate_check_clear": true,
+   "grn_matches_invoice": true,
+   "retro_po_approved": false,
+   "tax_code_matches_master": false,
+   "variance_within_tolerance": true
+  },
+  "flags": [],
+  "truth": {
+   "category": "duplicate_invoice",
+   "outcome": "valid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "S2P-020",
+  "amount": 631.08,
+  "text": "Supplier priced higher than PO on INV-64920. Tax code HSN mismatch on invoice INV-64920.",
+  "attributes": {
+   "duplicate_check_clear": false,
+   "grn_matches_invoice": false,
+   "retro_po_approved": false,
+   "tax_code_matches_master": false,
+   "variance_within_tolerance": false
+  },
+  "flags": [],
+  "truth": {
+   "category": "tax_mismatch",
+   "outcome": "invalid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "S2P-021",
+  "amount": 2178.14,
+  "text": "Invoice INV-34000 unit price higher than PO, price variance flagged.",
+  "attributes": {
+   "duplicate_check_clear": true,
+   "grn_matches_invoice": true,
+   "retro_po_approved": false,
+   "tax_code_matches_master": true,
+   "variance_within_tolerance": true
+  },
+  "flags": [],
+  "truth": {
+   "category": "price_variance",
+   "outcome": "valid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "S2P-022",
+  "amount": 9365.26,
+  "text": "Invoice INV-42570 quantity does not match GRN, partial delivery.",
+  "attributes": {
+   "duplicate_check_clear": false,
+   "grn_matches_invoice": true,
+   "retro_po_approved": true,
+   "tax_code_matches_master": false,
+   "variance_within_tolerance": false
+  },
+  "flags": [],
+  "truth": {
+   "category": "quantity_variance",
+   "outcome": "valid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "S2P-023",
+  "amount": 2452.71,
+  "text": "Service invoice INV-69289 raised without purchase order.",
+  "attributes": {
+   "duplicate_check_clear": true,
+   "grn_matches_invoice": true,
+   "retro_po_approved": false,
+   "tax_code_matches_master": false,
+   "variance_within_tolerance": false
+  },
+  "flags": [],
+  "truth": {
+   "category": "missing_po",
+   "outcome": "invalid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "S2P-024",
+  "amount": 44123.71,
+  "text": "Supplier resubmitted INV-19508, copy of invoice already invoiced?",
+  "attributes": {
+   "duplicate_check_clear": false,
+   "grn_matches_invoice": false,
+   "retro_po_approved": false,
+   "tax_code_matches_master": false,
+   "variance_within_tolerance": true
+  },
+  "flags": [],
+  "truth": {
+   "category": "duplicate_invoice",
+   "outcome": "invalid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "S2P-025",
+  "amount": 1931.83,
+  "text": "Tax code HSN mismatch on invoice INV-22337.",
+  "attributes": {
+   "duplicate_check_clear": true,
+   "grn_matches_invoice": false,
+   "retro_po_approved": true,
+   "tax_code_matches_master": true,
+   "variance_within_tolerance": false
+  },
+  "flags": [],
+  "truth": {
+   "category": "tax_mismatch",
+   "outcome": "valid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "S2P-026",
+  "amount": 15812.14,
+  "text": "Price mismatch between PO and invoice INV-54299, rate difference of 1.5 percent.",
+  "attributes": {
+   "duplicate_check_clear": false,
+   "grn_matches_invoice": true,
+   "retro_po_approved": true,
+   "tax_code_matches_master": true,
+   "variance_within_tolerance": true
+  },
+  "flags": [],
+  "truth": {
+   "category": "price_variance",
+   "outcome": "valid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "S2P-027",
+  "amount": 33406.06,
+  "text": "Invoice INV-45641 quantity does not match GRN, partial delivery.",
+  "attributes": {
+   "duplicate_check_clear": true,
+   "grn_matches_invoice": true,
+   "retro_po_approved": true,
+   "tax_code_matches_master": false,
+   "variance_within_tolerance": false
+  },
+  "flags": [],
+  "truth": {
+   "category": "quantity_variance",
+   "outcome": "valid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "S2P-028",
+  "amount": 4980.78,
+  "text": "Missing PO on INV-21725, no purchase order in system.",
+  "attributes": {
+   "duplicate_check_clear": true,
+   "grn_matches_invoice": false,
+   "retro_po_approved": true,
+   "tax_code_matches_master": true,
+   "variance_within_tolerance": true
+  },
+  "flags": [],
+  "truth": {
+   "category": "missing_po",
+   "outcome": "valid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "S2P-029",
+  "amount": 16800.77,
+  "text": "Duplicate flag on INV-11513.",
+  "attributes": {
+   "duplicate_check_clear": false,
+   "grn_matches_invoice": false,
+   "retro_po_approved": false,
+   "tax_code_matches_master": true,
+   "variance_within_tolerance": false
+  },
+  "flags": [],
+  "truth": {
+   "category": "duplicate_invoice",
+   "outcome": "invalid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "S2P-030",
+  "amount": 4648.53,
+  "text": "Tax code HSN mismatch on invoice INV-79610.",
+  "attributes": {
+   "duplicate_check_clear": true,
+   "grn_matches_invoice": false,
+   "retro_po_approved": true,
+   "tax_code_matches_master": null,
+   "variance_within_tolerance": false
+  },
+  "flags": [],
+  "truth": {
+   "category": "tax_mismatch",
+   "outcome": "valid",
+   "info_missing": true
+  }
+ },
+ {
+  "id": "S2P-031",
+  "amount": 37678.79,
+  "text": "VAT on INV-96287 does not match vendor master tax rate. Price mismatch between PO and invoice INV-96287, rate difference of 1.5 percent.",
+  "attributes": {
+   "duplicate_check_clear": true,
+   "grn_matches_invoice": false,
+   "retro_po_approved": false,
+   "tax_code_matches_master": true,
+   "variance_within_tolerance": true
+  },
+  "flags": [],
+  "truth": {
+   "category": "price_variance",
+   "outcome": "valid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "S2P-032",
+  "amount": 5290.22,
+  "text": "Match exception on INV-55554, please review.",
+  "attributes": {
+   "duplicate_check_clear": true,
+   "grn_matches_invoice": false,
+   "retro_po_approved": false,
+   "tax_code_matches_master": true,
+   "variance_within_tolerance": true
+  },
+  "flags": [],
+  "truth": {
+   "category": "quantity_variance",
+   "outcome": "invalid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "S2P-033",
+  "amount": 26357.79,
+  "text": "Invoice INV-48411 received with no PO reference, PO not found.",
+  "attributes": {
+   "duplicate_check_clear": true,
+   "grn_matches_invoice": true,
+   "retro_po_approved": true,
+   "tax_code_matches_master": false,
+   "variance_within_tolerance": false
+  },
+  "flags": [],
+  "truth": {
+   "category": "missing_po",
+   "outcome": "valid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "S2P-034",
+  "amount": 7273.42,
+  "text": "Possible duplicate: INV-10140 looks like the same invoice paid last month.",
+  "attributes": {
+   "duplicate_check_clear": null,
+   "grn_matches_invoice": true,
+   "retro_po_approved": true,
+   "tax_code_matches_master": true,
+   "variance_within_tolerance": true
+  },
+  "flags": [],
+  "truth": {
+   "category": "duplicate_invoice",
+   "outcome": "valid",
+   "info_missing": true
+  }
+ },
+ {
+  "id": "S2P-035",
+  "amount": 9047.18,
+  "text": "VAT on INV-92532 does not match vendor master tax rate.",
+  "attributes": {
+   "duplicate_check_clear": false,
+   "grn_matches_invoice": false,
+   "retro_po_approved": true,
+   "tax_code_matches_master": true,
+   "variance_within_tolerance": false
+  },
+  "flags": [],
+  "truth": {
+   "category": "tax_mismatch",
+   "outcome": "valid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "S2P-036",
+  "amount": 10362.09,
+  "text": "Invoice INV-91095 unit price higher than PO, price variance flagged.",
+  "attributes": {
+   "duplicate_check_clear": false,
+   "grn_matches_invoice": false,
+   "retro_po_approved": true,
+   "tax_code_matches_master": true,
+   "variance_within_tolerance": true
+  },
+  "flags": [],
+  "truth": {
+   "category": "price_variance",
+   "outcome": "valid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "S2P-037",
+  "amount": 358.66,
+  "text": "Invoice INV-12107 received with no PO reference, PO not found. Invoice INV-12107 quantity does not match GRN, partial delivery.",
+  "attributes": {
+   "duplicate_check_clear": true,
+   "grn_matches_invoice": null,
+   "retro_po_approved": false,
+   "tax_code_matches_master": true,
+   "variance_within_tolerance": true
+  },
+  "flags": [],
+  "truth": {
+   "category": "quantity_variance",
+   "outcome": "valid",
+   "info_missing": true
+  }
+ },
+ {
+  "id": "S2P-038",
+  "amount": 8448.02,
+  "text": "Supplier priced higher than PO on INV-75925. Missing PO on INV-75925, no purchase order in system.",
+  "attributes": {
+   "duplicate_check_clear": true,
+   "grn_matches_invoice": false,
+   "retro_po_approved": false,
+   "tax_code_matches_master": true,
+   "variance_within_tolerance": true
+  },
+  "flags": [],
+  "truth": {
+   "category": "missing_po",
+   "outcome": "invalid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "S2P-039",
+  "amount": 11294.37,
+  "text": "Duplicate flag on INV-20058.",
+  "attributes": {
+   "duplicate_check_clear": true,
+   "grn_matches_invoice": true,
+   "retro_po_approved": false,
+   "tax_code_matches_master": true,
+   "variance_within_tolerance": true
+  },
+  "flags": [],
+  "truth": {
+   "category": "duplicate_invoice",
+   "outcome": "valid",
+   "info_missing": false
+  }
+ },
+ {
+  "id": "S2P-040",
+  "amount": 17881.42,
+  "text": "Tax code HSN mismatch on invoice INV-73231.",
+  "attributes": {
+   "duplicate_check_clear": false,
+   "grn_matches_invoice": true,
+   "retro_po_approved": true,
+   "tax_code_matches_master": true,
+   "variance_within_tolerance": false
+  },
+  "flags": [],
+  "truth": {
+   "category": "tax_mismatch",
+   "outcome": "valid",
+   "info_missing": false
+  }
+ }
+]

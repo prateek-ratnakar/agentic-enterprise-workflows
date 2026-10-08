@@ -1,0 +1,118 @@
+{
+  "workflow_id": "s2p_invoice_exceptions",
+  "display_name": "Source to Pay - Invoice Exception Handling",
+  "industry": "Cross-industry (Manufacturing, High-Tech, Retail)",
+  "process_family": "Source to Pay",
+  "process_step": "Accounts payable > Three-way match > Exception resolution",
+  "currency": "USD",
+  "description": "A supplier invoice fails the three-way match against purchase order and goods receipt. The workflow decides whether to release payment, hold it, or send the exception to the buyer or budget owner.",
+  "categories": {
+    "price_variance": {
+      "label": "Price variance",
+      "keywords": [
+        "price variance",
+        "unit price",
+        "price mismatch",
+        "rate difference",
+        "priced higher"
+      ],
+      "valid_if": [
+        "variance_within_tolerance"
+      ],
+      "on_valid": "Release for payment: variance within tolerance",
+      "on_invalid": "Hold: request credit note for price above PO",
+      "policy_query": "price variance tolerance purchase order unit price credit note"
+    },
+    "quantity_variance": {
+      "label": "Quantity variance",
+      "keywords": [
+        "quantity",
+        "grn",
+        "goods receipt",
+        "partial delivery",
+        "qty",
+        "units received"
+      ],
+      "valid_if": [
+        "grn_matches_invoice"
+      ],
+      "on_valid": "Release for payment: goods receipt matches invoice",
+      "on_invalid": "Hold: pay received quantity only, request debit note",
+      "policy_query": "quantity variance goods receipt grn partial delivery debit note"
+    },
+    "missing_po": {
+      "label": "Missing purchase order",
+      "keywords": [
+        "no po",
+        "missing po",
+        "without purchase order",
+        "po not found",
+        "no purchase order"
+      ],
+      "valid_if": [
+        "retro_po_approved"
+      ],
+      "on_valid": "Release after retrospective PO approval",
+      "on_invalid": "Reject under no-PO-no-pay and notify budget owner",
+      "policy_query": "no po no pay retrospective purchase order budget owner approval"
+    },
+    "duplicate_invoice": {
+      "label": "Possible duplicate",
+      "keywords": [
+        "duplicate",
+        "same invoice",
+        "resubmitted",
+        "already invoiced",
+        "copy of invoice"
+      ],
+      "valid_if": [
+        "duplicate_check_clear"
+      ],
+      "on_valid": "Release: duplicate check clear, distinct invoice",
+      "on_invalid": "Reject as duplicate and notify supplier",
+      "policy_query": "duplicate invoice check resubmitted reject notify supplier"
+    },
+    "tax_mismatch": {
+      "label": "Tax mismatch",
+      "keywords": [
+        "gst",
+        "tax",
+        "vat",
+        "hsn",
+        "tax rate"
+      ],
+      "valid_if": [
+        "tax_code_matches_master"
+      ],
+      "on_valid": "Release: tax code matches vendor and item master",
+      "on_invalid": "Hold: request corrected tax invoice",
+      "policy_query": "tax code mismatch gst vat hsn corrected tax invoice"
+    }
+  },
+  "human_only_categories": [
+    "missing_po"
+  ],
+  "human_review_flags": [
+    "new_supplier_first_invoice",
+    "sanctions_screening_hit"
+  ],
+  "thresholds": {
+    "min_confidence": 0.6,
+    "min_grounding_score": 0.3,
+    "auto_max_amount": 15000
+  },
+  "value_model": {
+    "_note": "ASSUMPTIONS for illustration. Replace with the client's measured baseline before building a business case.",
+    "manual_minutes_per_case": 25,
+    "auto_minutes_per_case": 1.5,
+    "assisted_minutes_per_case": 9,
+    "pending_minutes_per_case": 5,
+    "manual_days_to_resolve": 9,
+    "auto_days_to_resolve": 0.5,
+    "assisted_days_to_resolve": 3,
+    "pending_days_to_resolve": 5,
+    "annual_volume": 90000,
+    "cost_per_hour": 20,
+    "invalid_amount_label": "Invoice value held or rejected before payment (sample)"
+  }
+}
